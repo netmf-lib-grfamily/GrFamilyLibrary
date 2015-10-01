@@ -3,7 +3,7 @@ using Microsoft.SPOT.Hardware;
 
 namespace GrFamily.MainBoard
 {
-    public class Peach
+    public class Peach : IPortDefinitions
     {
         private const Cpu.Pin ButtonPin = (Cpu.Pin)0x60;
 
@@ -84,6 +84,68 @@ namespace GrFamily.MainBoard
             Magenta = Red + Blue,
             Cyan = Green + Blue,
             White = Red + Green + Blue
+        }
+
+        public Cpu.Pin GetDigitalPin(int port)
+        {
+            switch (port)
+            {
+                case 0:
+                    return (Cpu.Pin)0x2f;
+                case 1:
+                    return (Cpu.Pin)0x2e;
+                case 2:
+                    return (Cpu.Pin)0x47;
+                case 3:
+                    return (Cpu.Pin)0x46;
+                case 4:
+                    return (Cpu.Pin)0x45;
+                case 5:
+                    return (Cpu.Pin)0x44;
+                case 6:
+                    return (Cpu.Pin)0x8d;
+                case 7:
+                    return (Cpu.Pin)0x8b;
+                case 8:
+                    return (Cpu.Pin)0x8f;
+                case 9:
+                    return (Cpu.Pin)0x8e;
+                case 10:
+                    return (Cpu.Pin)0xad;
+                case 11:
+                    return (Cpu.Pin)0xae;
+                case 12:
+                    return (Cpu.Pin)0xaf;
+                case 13:
+                    return (Cpu.Pin)0xac;
+                case 14:
+                    return (Cpu.Pin)0x13;
+                case 15:
+                    return (Cpu.Pin)0x12;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public Cpu.Pin GetAnalogPin(int port)
+        {
+            switch (port)
+            {
+                case 0:
+                    return (Cpu.Pin)0x18;
+                case 1:
+                    return (Cpu.Pin)0x19;
+                case 2:
+                    return (Cpu.Pin)0x1a;
+                case 3:
+                    return (Cpu.Pin)0x1b;
+                case 4:
+                    return (Cpu.Pin)0x1d;
+                case 5:
+                    return (Cpu.Pin)0x1f;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

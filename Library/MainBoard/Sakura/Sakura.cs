@@ -1,9 +1,10 @@
+using System;
 using System.Threading;
 using Microsoft.SPOT.Hardware;
 
 namespace GrFamily.MainBoard
 {
-    public class Sakura
+    public class Sakura : IPortDefinitions
     {
         private const Cpu.Pin ButtonPin = (Cpu.Pin)0x57;
 
@@ -96,6 +97,64 @@ namespace GrFamily.MainBoard
         public void PulseDebugLed(int length, int times)
         {
             _debugLed.PulseDebugLed(length, times);
+        }
+
+        public Cpu.Pin GetDigitalPin(int port)
+        {
+            switch (port)
+            {
+                case 0:
+                    return (Cpu.Pin)0x21;
+                case 1:
+                    return (Cpu.Pin)0x20;
+                case 2:
+                    return (Cpu.Pin)0x22;
+                case 3:
+                    return (Cpu.Pin)0x23;
+                case 4:
+                    return (Cpu.Pin)0x24;
+                case 5:
+                    return (Cpu.Pin)0x25;
+                case 6:
+                    return (Cpu.Pin)0x32;
+                case 7:
+                    return (Cpu.Pin)0x33;
+                case 8:
+                    return (Cpu.Pin)0xc2;
+                case 9:
+                    return (Cpu.Pin)0xc3;
+                case 10:
+                    return (Cpu.Pin)0xc4;
+                case 11:
+                    return (Cpu.Pin)0xc6;
+                case 12:
+                    return (Cpu.Pin)0xc7;
+                case 13:
+                    return (Cpu.Pin)0xc5;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public Cpu.Pin GetAnalogPin(int port)
+        {
+            switch (port)
+            {
+                case 0:
+                    return (Cpu.Pin)0x40;
+                case 1:
+                    return (Cpu.Pin)0x41;
+                case 2:
+                    return (Cpu.Pin)0x42;
+                case 3:
+                    return (Cpu.Pin)0x43;
+                case 4:
+                    return (Cpu.Pin)0x44;
+                case 5:
+                    return (Cpu.Pin)0x45;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }
