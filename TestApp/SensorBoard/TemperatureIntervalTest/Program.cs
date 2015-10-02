@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using GrFamily.ExternalBoard;
+using GrFamily.MainBoard;
 using Microsoft.SPOT;
 
 namespace TemperatureIntervalTest
@@ -11,7 +12,8 @@ namespace TemperatureIntervalTest
 
         public static void Main()
         {
-            _temperature = (new SensorBoard()).Temperature;
+            var peach = new Peach();
+            _temperature = (new SensorBoard((IMainBoard)peach)).Temperature;
             _temperature.MeasurementComplete += temperature_MeasurementComplete;
             _temperature.MeasurementInterval = new TimeSpan(0, 0, 3);
 

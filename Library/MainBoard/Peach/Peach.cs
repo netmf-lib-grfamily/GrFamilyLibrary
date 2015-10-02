@@ -3,8 +3,35 @@ using Microsoft.SPOT.Hardware;
 
 namespace GrFamily.MainBoard
 {
-    public class Peach : IPortDefinitions
+    public class Peach : IMainBoard
     {
+        // デジタル入出力のピン番号
+        public const Cpu.Pin GpioPinD0 = (Cpu.Pin)0x2f;
+        public const Cpu.Pin GpioPinD1 = (Cpu.Pin)0x2e;
+        public const Cpu.Pin GpioPinD2 = (Cpu.Pin)0x47;
+        public const Cpu.Pin GpioPinD3 = (Cpu.Pin)0x46;
+        public const Cpu.Pin GpioPinD4 = (Cpu.Pin)0x45;
+        public const Cpu.Pin GpioPinD5 = (Cpu.Pin)0x44;
+        public const Cpu.Pin GpioPinD6 = (Cpu.Pin)0x8d;
+        public const Cpu.Pin GpioPinD7 = (Cpu.Pin)0x8b;
+        public const Cpu.Pin GpioPinD8 = (Cpu.Pin)0x8f;
+        public const Cpu.Pin GpioPinD9 = (Cpu.Pin)0x8e;
+        public const Cpu.Pin GpioPinD10 = (Cpu.Pin)0xad;
+        public const Cpu.Pin GpioPinD11 = (Cpu.Pin)0xae;
+        public const Cpu.Pin GpioPinD12 = (Cpu.Pin)0xaf;
+        public const Cpu.Pin GpioPinD13 = (Cpu.Pin)0xac;
+        public const Cpu.Pin GpioPinD14 = (Cpu.Pin)0x13;
+        public const Cpu.Pin GpioPinD15 = (Cpu.Pin)0x12;
+
+        // アナログ入出力のピン番号
+        public const Cpu.Pin GpioPinA0 = (Cpu.Pin)0x18;
+        public const Cpu.Pin GpioPinA1 = (Cpu.Pin)0x19;
+        public const Cpu.Pin GpioPinA2 = (Cpu.Pin)0x1a;
+        public const Cpu.Pin GpioPinA3 = (Cpu.Pin)0x1b;
+        public const Cpu.Pin GpioPinA4 = (Cpu.Pin)0x1d;
+        public const Cpu.Pin GpioPinA5 = (Cpu.Pin)0x1f;
+
+        // Buttonのピン番号
         private const Cpu.Pin ButtonPin = (Cpu.Pin)0x60;
 
         // 各 LED のピン番号
@@ -12,8 +39,6 @@ namespace GrFamily.MainBoard
         private const Cpu.Pin GreenPin = (Cpu.Pin)0x6e;     // 緑
         private const Cpu.Pin BluePin = (Cpu.Pin)0x6f;      // 青
         private const Cpu.Pin UserPin = (Cpu.Pin)0x6c;      // ユーザー
-
-        private readonly Button _button;
 
         private readonly Led _redLed;
         private readonly Led _greenLed;
@@ -27,10 +52,10 @@ namespace GrFamily.MainBoard
             _blueLed = new Led(BluePin);
             _debugLed = new DebugLed(UserPin);
 
-            _button = new Button(ButtonPin);
+            Button = new Button(ButtonPin);
         }
 
-        public Button Button { get { return _button; } }
+        public Button Button { get; }
 
         public void TurnAllLedsOff()
         {
@@ -69,6 +94,89 @@ namespace GrFamily.MainBoard
             _debugLed.PulseDebugLed(length, times);
         }
 
+        public Cpu.Pin DigitalPin(int pin)
+        {
+            switch (pin)
+            {
+                case 0:
+                    return GpioPinD0;
+                case 1:
+                    return GpioPinD1;
+                case 2:
+                    return GpioPinD2;
+                case 3:
+                    return GpioPinD3;
+                case 4:
+                    return GpioPinD4;
+                case 5:
+                    return GpioPinD5;
+                case 6:
+                    return GpioPinD6;
+                case 7:
+                    return GpioPinD7;
+                case 8:
+                    return GpioPinD8;
+                case 9:
+                    return GpioPinD9;
+                case 10:
+                    return GpioPinD10;
+                case 11:
+                    return GpioPinD11;
+                case 12:
+                    return GpioPinD12;
+                case 13:
+                    return GpioPinD13;
+                case 14:
+                    return GpioPinD14;
+                case 15:
+                    return GpioPinD15;
+                default:
+                    throw new ArgumentException();
+            }
+        }
+
+        public Cpu.Pin AnalogPin(int port)
+        {
+            switch (port)
+            {
+                case 0:
+                    return GpioPinA0;
+                case 1:
+                    return GpioPinA1;
+                case 2:
+                    return GpioPinA2;
+                case 3:
+                    return GpioPinA3;
+                case 4:
+                    return GpioPinA4;
+                case 5:
+                    return GpioPinA5;
+                default:
+                    throw new ArgumentException();
+            }
+        }
+
+        public Cpu.AnalogChannel AnalogChannel(int port)
+        {
+            switch (port)
+            {
+                case 0:
+                    return (Cpu.AnalogChannel) 0;
+                case 1:
+                    return (Cpu.AnalogChannel) 1;
+                case 2:
+                    return (Cpu.AnalogChannel) 2;
+                case 3:
+                    return (Cpu.AnalogChannel) 3;
+                case 4:
+                    return (Cpu.AnalogChannel) 5;
+                case 5:
+                    return (Cpu.AnalogChannel) 7;
+                default:
+                    throw new ArgumentException();
+            }
+        }
+
         /// <summary>
         /// 色名指定
         /// </summary>
@@ -84,68 +192,6 @@ namespace GrFamily.MainBoard
             Magenta = Red + Blue,
             Cyan = Green + Blue,
             White = Red + Green + Blue
-        }
-
-        public Cpu.Pin GetDigitalPin(int port)
-        {
-            switch (port)
-            {
-                case 0:
-                    return (Cpu.Pin)0x2f;
-                case 1:
-                    return (Cpu.Pin)0x2e;
-                case 2:
-                    return (Cpu.Pin)0x47;
-                case 3:
-                    return (Cpu.Pin)0x46;
-                case 4:
-                    return (Cpu.Pin)0x45;
-                case 5:
-                    return (Cpu.Pin)0x44;
-                case 6:
-                    return (Cpu.Pin)0x8d;
-                case 7:
-                    return (Cpu.Pin)0x8b;
-                case 8:
-                    return (Cpu.Pin)0x8f;
-                case 9:
-                    return (Cpu.Pin)0x8e;
-                case 10:
-                    return (Cpu.Pin)0xad;
-                case 11:
-                    return (Cpu.Pin)0xae;
-                case 12:
-                    return (Cpu.Pin)0xaf;
-                case 13:
-                    return (Cpu.Pin)0xac;
-                case 14:
-                    return (Cpu.Pin)0x13;
-                case 15:
-                    return (Cpu.Pin)0x12;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-
-        public Cpu.Pin GetAnalogPin(int port)
-        {
-            switch (port)
-            {
-                case 0:
-                    return (Cpu.Pin)0x18;
-                case 1:
-                    return (Cpu.Pin)0x19;
-                case 2:
-                    return (Cpu.Pin)0x1a;
-                case 3:
-                    return (Cpu.Pin)0x1b;
-                case 4:
-                    return (Cpu.Pin)0x1d;
-                case 5:
-                    return (Cpu.Pin)0x1f;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
         }
     }
 }

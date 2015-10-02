@@ -31,7 +31,6 @@
   <ItemGroup>
     <Compile Include="Button.cs" />
     <Compile Include="DebugLed.cs" />
-    <Compile Include="IPortDefinitions.cs" />
     <Compile Include="Led.cs" />
     <Compile Include="Peach.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -40,6 +39,12 @@
   <ItemGroup>
     <Reference Include="Microsoft.SPOT.Hardware" />
     <Reference Include="Microsoft.SPOT.Native" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MainboardCore\MainboardCore.csproj">
+      <Project>{84C44AB4-0B2D-4437-83F3-BA72084B698A}</Project>
+      <Name>MainboardCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Condition="EXISTS('$(NetMfTargetsBaseDir)$(TargetFrameworkVersion)\CSharp.Targets')" Project="$(NetMfTargetsBaseDir)$(TargetFrameworkVersion)\CSharp.Targets" />
   <Import Condition="!EXISTS('$(NetMfTargetsBaseDir)$(TargetFrameworkVersion)\CSharp.Targets')" Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

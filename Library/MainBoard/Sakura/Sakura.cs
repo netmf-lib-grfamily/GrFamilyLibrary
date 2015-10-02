@@ -4,8 +4,33 @@ using Microsoft.SPOT.Hardware;
 
 namespace GrFamily.MainBoard
 {
-    public class Sakura : IPortDefinitions
+    public class Sakura : IMainBoard
     {
+        // デジタル入出力のピン番号
+        public const Cpu.Pin GpioPinD0 = (Cpu.Pin)0x21;
+        public const Cpu.Pin GpioPinD1 = (Cpu.Pin)0x20;
+        public const Cpu.Pin GpioPinD2 = (Cpu.Pin)0x22;
+        public const Cpu.Pin GpioPinD3 = (Cpu.Pin)0x23;
+        public const Cpu.Pin GpioPinD4 = (Cpu.Pin)0x24;
+        public const Cpu.Pin GpioPinD5 = (Cpu.Pin)0x25;
+        public const Cpu.Pin GpioPinD6 = (Cpu.Pin)0x32;
+        public const Cpu.Pin GpioPinD7 = (Cpu.Pin)0x33;
+        public const Cpu.Pin GpioPinD8 = (Cpu.Pin)0xc2;
+        public const Cpu.Pin GpioPinD9 = (Cpu.Pin)0xc3;
+        public const Cpu.Pin GpioPinD10 = (Cpu.Pin)0xc4;
+        public const Cpu.Pin GpioPinD11 = (Cpu.Pin)0xc6;
+        public const Cpu.Pin GpioPinD12 = (Cpu.Pin)0xc7;
+        public const Cpu.Pin GpioPinD13 = (Cpu.Pin)0xc5;
+
+        // アナログ入出力のピン番号
+        public const Cpu.Pin GpioPinA0 = (Cpu.Pin)0x40;
+        public const Cpu.Pin GpioPinA1 = (Cpu.Pin)0x41;
+        public const Cpu.Pin GpioPinA2 = (Cpu.Pin)0x42;
+        public const Cpu.Pin GpioPinA3 = (Cpu.Pin)0x43;
+        public const Cpu.Pin GpioPinA4 = (Cpu.Pin)0x44;
+        public const Cpu.Pin GpioPinA5 = (Cpu.Pin)0x45;
+
+        // Buttonのピン番号
         private const Cpu.Pin ButtonPin = (Cpu.Pin)0x57;
 
         // 各 LED のピン番号
@@ -99,61 +124,82 @@ namespace GrFamily.MainBoard
             _debugLed.PulseDebugLed(length, times);
         }
 
-        public Cpu.Pin GetDigitalPin(int port)
+        public Cpu.Pin DigitalPin(int pin)
         {
-            switch (port)
+            switch (pin)
             {
                 case 0:
-                    return (Cpu.Pin)0x21;
+                    return GpioPinD0;
                 case 1:
-                    return (Cpu.Pin)0x20;
+                    return GpioPinD1;
                 case 2:
-                    return (Cpu.Pin)0x22;
+                    return GpioPinD2;
                 case 3:
-                    return (Cpu.Pin)0x23;
+                    return GpioPinD3;
                 case 4:
-                    return (Cpu.Pin)0x24;
+                    return GpioPinD4;
                 case 5:
-                    return (Cpu.Pin)0x25;
+                    return GpioPinD5;
                 case 6:
-                    return (Cpu.Pin)0x32;
+                    return GpioPinD6;
                 case 7:
-                    return (Cpu.Pin)0x33;
+                    return GpioPinD7;
                 case 8:
-                    return (Cpu.Pin)0xc2;
+                    return GpioPinD8;
                 case 9:
-                    return (Cpu.Pin)0xc3;
+                    return GpioPinD9;
                 case 10:
-                    return (Cpu.Pin)0xc4;
+                    return GpioPinD10;
                 case 11:
-                    return (Cpu.Pin)0xc6;
+                    return GpioPinD11;
                 case 12:
-                    return (Cpu.Pin)0xc7;
+                    return GpioPinD12;
                 case 13:
-                    return (Cpu.Pin)0xc5;
+                    return GpioPinD13;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentException();
             }
         }
 
-        public Cpu.Pin GetAnalogPin(int port)
+        public Cpu.Pin AnalogPin(int port)
         {
             switch (port)
             {
                 case 0:
-                    return (Cpu.Pin)0x40;
+                    return GpioPinA0;
                 case 1:
-                    return (Cpu.Pin)0x41;
+                    return GpioPinA1;
                 case 2:
-                    return (Cpu.Pin)0x42;
+                    return GpioPinA2;
                 case 3:
-                    return (Cpu.Pin)0x43;
+                    return GpioPinA3;
                 case 4:
-                    return (Cpu.Pin)0x44;
+                    return GpioPinA4;
                 case 5:
-                    return (Cpu.Pin)0x45;
+                    return GpioPinA5;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentException();
+            }
+        }
+
+        public Cpu.AnalogChannel AnalogChannel(int port)
+        {
+            switch (port)
+            {
+                case 0:
+                    return (Cpu.AnalogChannel)0;
+                case 1:
+                    return (Cpu.AnalogChannel)1;
+                case 2:
+                    return (Cpu.AnalogChannel)2;
+                case 3:
+                    return (Cpu.AnalogChannel)3;
+                case 4:
+                    return (Cpu.AnalogChannel)5;
+                case 5:
+                    return (Cpu.AnalogChannel)7;
+                default:
+                    throw new ArgumentException();
             }
         }
     }

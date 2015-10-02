@@ -1,5 +1,6 @@
 using System.Threading;
 using GrFamily.ExternalBoard;
+using GrFamily.MainBoard;
 using Microsoft.SPOT;
 
 namespace TemperatureTest
@@ -8,7 +9,8 @@ namespace TemperatureTest
     {
         public static void Main()
         {
-            var temperature = (new SensorBoard()).Temperature;
+            var peach = new Peach();
+            var temperature = (new SensorBoard((IMainBoard)peach)).Temperature;
 
             while (true)
             {

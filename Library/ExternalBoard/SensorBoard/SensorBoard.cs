@@ -1,5 +1,4 @@
-using System;
-using Microsoft.SPOT;
+using GrFamily.MainBoard;
 using Microsoft.SPOT.Hardware;
 
 namespace GrFamily.ExternalBoard
@@ -7,9 +6,9 @@ namespace GrFamily.ExternalBoard
     public class SensorBoard
     {
         // サーミスターの入力チャンネル
-        private const Cpu.AnalogChannel TempChannel = (Cpu.AnalogChannel) 7;
+        private readonly Cpu.AnalogChannel _tempChannel;
         // 加速度センサーのアドレス
-        private const byte AccelerometerAddress = 0x1d;
+        private readonly ushort _accelerometerAddress;
 
 
         private const double Bc = 3435;         // 103ATのB定数
@@ -30,7 +29,7 @@ namespace GrFamily.ExternalBoard
         {
             get
             {
-                return _temperature ?? (_temperature = new Temperature(TempChannel, Bc, R25, _vr1, Adc));
+                return _temperature ?? (_temperature = new Temperature(_tempChannel, Bc, R25, _vr1, Adc));
             }
         }
 
@@ -40,7 +39,7 @@ namespace GrFamily.ExternalBoard
             {
                 if (_accelerometer == null)
                 {
-                    var i2C = new I2CDevice(new I2CDevice.Configuration((ushort)AccelerometerAddress, DefaultAccelClockRateKhz));
+                    var i2C = new I2CDevice(new I2CDevice.Configuration(_accelerometerAddress, DefaultAccelClockRateKhz));
                     _accelerometer = new Accelerometer(i2C, 1000);
                 }
 
@@ -48,12 +47,14 @@ namespace GrFamily.ExternalBoard
             }
         }
 
-        public SensorBoard() : this(DefaultVr1)
+        public SensorBoard(IMainBoard board) : this(board, DefaultVr1)
         {
         }
 
-        public SensorBoard(double vr1)
+        public SensorBoard(IMainBoard board, double vr1)
         {
+            _tempChannel = board.AnalogChannel(5);
+            _accelerometerAddress = (ushort) board.AnalogPin(4);
             _vr1 = vr1;
         }
     }

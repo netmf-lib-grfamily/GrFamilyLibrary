@@ -52,6 +52,14 @@
       <Project>{079BC8A3-AAC4-473F-88E4-AD2D15C99C8D}</Project>
       <Name>SensorBoard</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Library\MainBoard\MainboardCore\MainboardCore.csproj">
+      <Project>{84C44AB4-0B2D-4437-83F3-BA72084B698A}</Project>
+      <Name>MainboardCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Library\MainBoard\Peach\Peach.csproj">
+      <Project>{8775C27A-34B4-4546-88C7-EF219ED5E06A}</Project>
+      <Name>Peach</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Condition="EXISTS('$(NetMfTargetsBaseDir)$(TargetFrameworkVersion)\CSharp.Targets')" Project="$(NetMfTargetsBaseDir)$(TargetFrameworkVersion)\CSharp.Targets" />
   <Import Condition="!EXISTS('$(NetMfTargetsBaseDir)$(TargetFrameworkVersion)\CSharp.Targets')" Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

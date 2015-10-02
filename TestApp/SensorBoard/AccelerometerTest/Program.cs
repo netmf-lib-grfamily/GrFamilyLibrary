@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Microsoft.SPOT;
+using GrFamily.MainBoard;
 using GrFamily.ExternalBoard;
 
 namespace AccelerometerTest
@@ -11,7 +12,8 @@ namespace AccelerometerTest
 
         public static void Main()
         {
-            _accelerometer = (new SensorBoard()).Accelerometer;
+            var peach = new Peach();
+            _accelerometer = (new SensorBoard((IMainBoard)peach)).Accelerometer;
             _accelerometer.MeasurementRange = Accelerometer.Range.FourG;
 
             while (true)
