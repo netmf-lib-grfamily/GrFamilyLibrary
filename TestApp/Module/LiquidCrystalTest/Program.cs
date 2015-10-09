@@ -12,15 +12,11 @@ namespace LiquidCrystalTest
         public static void Main()
         {
             // 開発時の標準ピンアサイン
-            var lcd = new LiquidCrystal(Peach.GpioPinD9, Peach.GpioPinD8,
-                Peach.GpioPinD7, Peach.GpioPinD6, Peach.GpioPinD5, Peach.GpioPinD4);
-            //// ピン変更テスト
-            //var lcd = new LiquidCrystal(Peach.GpioPinD9, Peach.GpioPinD8,
-            //    Peach.GpioPinD3, Peach.GpioPinD2, Peach.GpioPinD1, Peach.GpioPinD0);
-
-            //// GR-SAKURAのテスト
-            //var lcd = new LiquidCrystal(Sakura.GpioPinD9, Sakura.GpioPinD8,
-            //    Sakura.GpioPinD7, Sakura.GpioPinD6, Sakura.GpioPinD5, Sakura.GpioPinD4);
+            var lcd = new LiquidCrystal(Pins.GPIO_PIN_D9, Pins.GPIO_PIN_D8,
+                Pins.GPIO_PIN_D7, Pins.GPIO_PIN_D6, Pins.GPIO_PIN_D5, Pins.GPIO_PIN_D4);
+            // ピン変更テスト
+            //var lcd = new LiquidCrystal(Pins.GPIO_PIN_D9, Pins.GPIO_PIN_D8,
+            //    Pins.GPIO_PIN_D3, Pins.GPIO_PIN_D2, Pins.GPIO_PIN_D1, Pins.GPIO_PIN_D0);
 
             while (true)
             {

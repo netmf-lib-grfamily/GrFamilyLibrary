@@ -47,14 +47,14 @@ namespace GrFamily.ExternalBoard
             }
         }
 
-        public SensorBoard(IMainBoard board) : this(board, DefaultVr1)
+        public SensorBoard() : this(DefaultVr1)
         {
         }
 
-        public SensorBoard(IMainBoard board, double vr1)
+        public SensorBoard(double vr1)
         {
-            _tempChannel = board.AnalogChannel(5);
-            _accelerometerAddress = (ushort) board.AnalogPin(4);
+            _tempChannel = Pins.ANALOG_5;
+            _accelerometerAddress = (ushort) Pins.GPIO_PIN_A4;
             _vr1 = vr1;
         }
     }

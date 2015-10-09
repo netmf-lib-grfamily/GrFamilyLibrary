@@ -12,8 +12,7 @@ namespace AccelerometerTest
 
         public static void Main()
         {
-            var peach = new Peach();
-            _accelerometer = (new SensorBoard((IMainBoard)peach)).Accelerometer;
+            _accelerometer = (new SensorBoard()).Accelerometer;
             _accelerometer.MeasurementRange = Accelerometer.Range.FourG;
 
             while (true)

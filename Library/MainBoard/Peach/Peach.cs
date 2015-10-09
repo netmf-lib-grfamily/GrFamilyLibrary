@@ -3,34 +3,8 @@ using Microsoft.SPOT.Hardware;
 
 namespace GrFamily.MainBoard
 {
-    public class Peach : IMainBoard
+    public class Peach
     {
-        // デジタル入出力のピン番号
-        public const Cpu.Pin GpioPinD0 = (Cpu.Pin)0x2f;
-        public const Cpu.Pin GpioPinD1 = (Cpu.Pin)0x2e;
-        public const Cpu.Pin GpioPinD2 = (Cpu.Pin)0x47;
-        public const Cpu.Pin GpioPinD3 = (Cpu.Pin)0x46;
-        public const Cpu.Pin GpioPinD4 = (Cpu.Pin)0x45;
-        public const Cpu.Pin GpioPinD5 = (Cpu.Pin)0x44;
-        public const Cpu.Pin GpioPinD6 = (Cpu.Pin)0x8d;
-        public const Cpu.Pin GpioPinD7 = (Cpu.Pin)0x8b;
-        public const Cpu.Pin GpioPinD8 = (Cpu.Pin)0x8f;
-        public const Cpu.Pin GpioPinD9 = (Cpu.Pin)0x8e;
-        public const Cpu.Pin GpioPinD10 = (Cpu.Pin)0xad;
-        public const Cpu.Pin GpioPinD11 = (Cpu.Pin)0xae;
-        public const Cpu.Pin GpioPinD12 = (Cpu.Pin)0xaf;
-        public const Cpu.Pin GpioPinD13 = (Cpu.Pin)0xac;
-        public const Cpu.Pin GpioPinD14 = (Cpu.Pin)0x13;
-        public const Cpu.Pin GpioPinD15 = (Cpu.Pin)0x12;
-
-        // アナログ入出力のピン番号
-        public const Cpu.Pin GpioPinA0 = (Cpu.Pin)0x18;
-        public const Cpu.Pin GpioPinA1 = (Cpu.Pin)0x19;
-        public const Cpu.Pin GpioPinA2 = (Cpu.Pin)0x1a;
-        public const Cpu.Pin GpioPinA3 = (Cpu.Pin)0x1b;
-        public const Cpu.Pin GpioPinA4 = (Cpu.Pin)0x1d;
-        public const Cpu.Pin GpioPinA5 = (Cpu.Pin)0x1f;
-
         // Buttonのピン番号
         private const Cpu.Pin ButtonPin = (Cpu.Pin)0x60;
 
@@ -92,89 +66,6 @@ namespace GrFamily.MainBoard
         public void PulseDebugLed(int length, int times)
         {
             _debugLed.PulseDebugLed(length, times);
-        }
-
-        public Cpu.Pin DigitalPin(int pin)
-        {
-            switch (pin)
-            {
-                case 0:
-                    return GpioPinD0;
-                case 1:
-                    return GpioPinD1;
-                case 2:
-                    return GpioPinD2;
-                case 3:
-                    return GpioPinD3;
-                case 4:
-                    return GpioPinD4;
-                case 5:
-                    return GpioPinD5;
-                case 6:
-                    return GpioPinD6;
-                case 7:
-                    return GpioPinD7;
-                case 8:
-                    return GpioPinD8;
-                case 9:
-                    return GpioPinD9;
-                case 10:
-                    return GpioPinD10;
-                case 11:
-                    return GpioPinD11;
-                case 12:
-                    return GpioPinD12;
-                case 13:
-                    return GpioPinD13;
-                case 14:
-                    return GpioPinD14;
-                case 15:
-                    return GpioPinD15;
-                default:
-                    throw new ArgumentException();
-            }
-        }
-
-        public Cpu.Pin AnalogPin(int port)
-        {
-            switch (port)
-            {
-                case 0:
-                    return GpioPinA0;
-                case 1:
-                    return GpioPinA1;
-                case 2:
-                    return GpioPinA2;
-                case 3:
-                    return GpioPinA3;
-                case 4:
-                    return GpioPinA4;
-                case 5:
-                    return GpioPinA5;
-                default:
-                    throw new ArgumentException();
-            }
-        }
-
-        public Cpu.AnalogChannel AnalogChannel(int port)
-        {
-            switch (port)
-            {
-                case 0:
-                    return (Cpu.AnalogChannel) 0;
-                case 1:
-                    return (Cpu.AnalogChannel) 1;
-                case 2:
-                    return (Cpu.AnalogChannel) 2;
-                case 3:
-                    return (Cpu.AnalogChannel) 3;
-                case 4:
-                    return (Cpu.AnalogChannel) 5;
-                case 5:
-                    return (Cpu.AnalogChannel) 7;
-                default:
-                    throw new ArgumentException();
-            }
         }
 
         /// <summary>

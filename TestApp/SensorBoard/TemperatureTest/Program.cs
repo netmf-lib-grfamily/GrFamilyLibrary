@@ -9,8 +9,7 @@ namespace TemperatureTest
     {
         public static void Main()
         {
-            var peach = new Peach();
-            var temperature = (new SensorBoard((IMainBoard)peach)).Temperature;
+            var temperature = (new SensorBoard()).Temperature;
 
             while (true)
             {

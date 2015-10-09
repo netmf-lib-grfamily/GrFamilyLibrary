@@ -49,10 +49,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Library\MainBoard\MainboardCore\MainboardCore.csproj">
-      <Project>{84C44AB4-0B2D-4437-83F3-BA72084B698A}</Project>
-      <Name>MainboardCore</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Library\MainBoard\Peach\Peach.csproj">
       <Project>{8775C27A-34B4-4546-88C7-EF219ED5E06A}</Project>
       <Name>Peach</Name>
