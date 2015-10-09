@@ -7,28 +7,28 @@ namespace GrFamily.MainBoard
     public class Sakura : IMainBoard
     {
         // デジタル入出力のピン番号
-        public const Cpu.Pin GpioPinD0 = (Cpu.Pin)0x21;
-        public const Cpu.Pin GpioPinD1 = (Cpu.Pin)0x20;
-        public const Cpu.Pin GpioPinD2 = (Cpu.Pin)0x22;
-        public const Cpu.Pin GpioPinD3 = (Cpu.Pin)0x23;
-        public const Cpu.Pin GpioPinD4 = (Cpu.Pin)0x24;
-        public const Cpu.Pin GpioPinD5 = (Cpu.Pin)0x25;
-        public const Cpu.Pin GpioPinD6 = (Cpu.Pin)0x32;
-        public const Cpu.Pin GpioPinD7 = (Cpu.Pin)0x33;
-        public const Cpu.Pin GpioPinD8 = (Cpu.Pin)0xc2;
-        public const Cpu.Pin GpioPinD9 = (Cpu.Pin)0xc3;
-        public const Cpu.Pin GpioPinD10 = (Cpu.Pin)0xc4;
-        public const Cpu.Pin GpioPinD11 = (Cpu.Pin)0xc6;
-        public const Cpu.Pin GpioPinD12 = (Cpu.Pin)0xc7;
-        public const Cpu.Pin GpioPinD13 = (Cpu.Pin)0xc5;
+        public const Cpu.Pin GpioPinD0 = (Cpu.Pin)17;
+        public const Cpu.Pin GpioPinD1 = (Cpu.Pin)16;
+        public const Cpu.Pin GpioPinD2 = (Cpu.Pin)18;
+        public const Cpu.Pin GpioPinD3 = (Cpu.Pin)19;
+        public const Cpu.Pin GpioPinD4 = (Cpu.Pin)20;
+        public const Cpu.Pin GpioPinD5 = (Cpu.Pin)21;
+        public const Cpu.Pin GpioPinD6 = (Cpu.Pin)26;
+        public const Cpu.Pin GpioPinD7 = (Cpu.Pin)27;
+        public const Cpu.Pin GpioPinD8 = (Cpu.Pin)98;
+        public const Cpu.Pin GpioPinD9 = (Cpu.Pin)99;
+        public const Cpu.Pin GpioPinD10 = (Cpu.Pin)100;
+        public const Cpu.Pin GpioPinD11 = (Cpu.Pin)102;
+        public const Cpu.Pin GpioPinD12 = (Cpu.Pin)103;
+        public const Cpu.Pin GpioPinD13 = (Cpu.Pin)101;
 
         // アナログ入出力のピン番号
-        public const Cpu.Pin GpioPinA0 = (Cpu.Pin)0x40;
-        public const Cpu.Pin GpioPinA1 = (Cpu.Pin)0x41;
-        public const Cpu.Pin GpioPinA2 = (Cpu.Pin)0x42;
-        public const Cpu.Pin GpioPinA3 = (Cpu.Pin)0x43;
-        public const Cpu.Pin GpioPinA4 = (Cpu.Pin)0x44;
-        public const Cpu.Pin GpioPinA5 = (Cpu.Pin)0x45;
+        public const Cpu.Pin GpioPinA0 = (Cpu.Pin)48;
+        public const Cpu.Pin GpioPinA1 = (Cpu.Pin)49;
+        public const Cpu.Pin GpioPinA2 = (Cpu.Pin)50;
+        public const Cpu.Pin GpioPinA3 = (Cpu.Pin)51;
+        public const Cpu.Pin GpioPinA4 = (Cpu.Pin)52;
+        public const Cpu.Pin GpioPinA5 = (Cpu.Pin)53;
 
         // Buttonのピン番号
         private const Cpu.Pin ButtonPin = (Cpu.Pin)0x57;
@@ -38,8 +38,6 @@ namespace GrFamily.MainBoard
         private const Cpu.Pin Led2Pin = (Cpu.Pin)0x51;
         private const Cpu.Pin Led3Pin = (Cpu.Pin)0x52;
         private const Cpu.Pin Led4Pin = (Cpu.Pin)0x56;
-
-        private readonly Button _button;
 
         private readonly Led _led1;
         private readonly Led _led2;
@@ -53,10 +51,10 @@ namespace GrFamily.MainBoard
             _led3 = new Led(Led3Pin);
             _debugLed = new DebugLed(Led4Pin);
 
-            _button = new Button(ButtonPin);
+            Button = new Button(ButtonPin);
         }
 
-        public Button Button { get { return _button; } }
+        public Button Button { get; }
 
         public void TurnAllLedsOff()
         {
