@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using Microsoft.SPOT;
-using GrFamily.MainBoard;
 using GrFamily.ExternalBoard;
 
 namespace AccelerometerTest

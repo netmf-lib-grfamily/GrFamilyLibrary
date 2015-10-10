@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using GrFamily.ExternalBoard;
-using GrFamily.MainBoard;
 using Microsoft.SPOT;
 
 namespace TemperatureIntervalTest

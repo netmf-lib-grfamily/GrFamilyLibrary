@@ -1,5 +1,3 @@
-using System;
-using System.Threading;
 using Microsoft.SPOT.Hardware;
 
 namespace GrFamily.MainBoard

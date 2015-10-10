@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using Microsoft.SPOT;
 using Microsoft.SPOT.Net.NetworkInformation;

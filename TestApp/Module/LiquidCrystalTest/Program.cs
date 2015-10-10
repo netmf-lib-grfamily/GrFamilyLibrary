@@ -1,9 +1,6 @@
-using System;
 using System.Threading;
-using Microsoft.SPOT;
 using GrFamily.MainBoard;
 using GrFamily.Module;
-using Microsoft.SPOT.Hardware;
 
 namespace LiquidCrystalTest
 {

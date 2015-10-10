@@ -190,3 +190,5 @@ ModelManifest.xml
 *.pdbx
 *.pe
 Library/Module/LiquidCrystal/
+TestApp/Module/LiquidCrystalTest/OnBoardFlash.dat
+TestApp/Module/LiquidCrystalTest/OnBoardFlash.dat.smd
