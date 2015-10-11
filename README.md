@@ -1,12 +1,19 @@
 # GrFamilyLibrary
 .NET Micro Framework Class Library for GR Family Boards
 
-ã“ã®ã‚½ãƒªãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³ã¯ã€GRãƒ•ã‚¡ãƒŸãƒªãƒ¼ã® .NET Micro Frameworkç”¨ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã§ã™ã€‚
-ï¼ˆGR-PEACH, GR-SAKURA, ã‚»ãƒ³ã‚µãƒ¼ãƒœãƒ¼ãƒ‰ã€æŽ¥ç¶šå¯èƒ½ãªå„ç¨®ã‚»ãƒ³ã‚µãƒ¼ãƒ‡ãƒã‚¤ã‚¹ï¼‰
+‚±‚Ìƒ\ƒŠƒ…[ƒVƒ‡ƒ“‚ÍAGRƒtƒ@ƒ~ƒŠ[‚Ì .NET Micro Framework—pƒ‰ƒCƒuƒ‰ƒŠ‚Å‚·B
+iGR-PEACH, GR-SAKURA, ƒZƒ“ƒT[ƒ{[ƒhAÚ‘±‰Â”\‚ÈŠeŽíƒZƒ“ƒT[ƒfƒoƒCƒXj
 
-å¯¾è±¡ã® .NET Micro Framework ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã¯ã€4.3 QFE2 ã§ã™ã€‚
+EPeach EEE GR-PEACH ƒNƒ‰ƒX
+ESakura EEE GR-SAKURA ƒNƒ‰ƒX
+ESensorBoard EEE PinKit ‚ÌƒZƒ“ƒT[ƒ{[ƒhi‰·“xA3Ž²‰Á‘¬“xƒZƒ“ƒT[j
+ENetworkUtility EEE —LüLAN ‚Ì‰Šú‰»ˆ—
+ELiquidCrystal EEE ƒLƒƒƒ‰ƒNƒ^[ƒfƒBƒXƒvƒŒƒCƒNƒ‰ƒXiHD44780 ŒÝŠ·j
 
-ãƒ©ã‚¤ãƒ–ãƒ©ãƒªï¼ˆLibraryãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ï¼‰ã€ãŠã‚ˆã³ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’åˆ©ç”¨ã™ã‚‹ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ï¼ˆTestAppãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ï¼‰ã¨ã‚‚ã€Visual Studio 2015 ã§ãƒ“ãƒ«ãƒ‰ã§ãã¾ã™ã€‚
 
-ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®ãƒã‚¤ãƒŠãƒªãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿å¿…è¦ãªå ´åˆã¯ã€DLLsãƒ•ã‚©ãƒ«ãƒ€ãƒ¼å†…ã®ZIPãƒ•ã‚¡ã‚¤ãƒ«ã‚’è§£å‡ã™ã‚‹ã“ã¨ã§åˆ©ç”¨å¯èƒ½ã§ã™ã€‚
-ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®åˆ©ç”¨ä¾‹ã¯ã€TestAppãƒ•ã‚©ãƒ«ãƒ€ãƒ¼å†…ã®å„ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
+‘ÎÛ‚Ì .NET Micro Framework ‚Ìƒo[ƒWƒ‡ƒ“‚ÍA4.3 QFE2 ‚Å‚·B
+
+ƒ‰ƒCƒuƒ‰ƒŠiLibraryƒtƒHƒ‹ƒ_[jA‚¨‚æ‚Ñƒ‰ƒCƒuƒ‰ƒŠ‚ð—˜—p‚·‚éƒAƒvƒŠƒP[ƒVƒ‡ƒ“iTestAppƒtƒHƒ‹ƒ_[j‚Æ‚àAVisual Studio 2015 ‚Åƒrƒ‹ƒh‚Å‚«‚Ü‚·B
+
+ƒ‰ƒCƒuƒ‰ƒŠ‚ÌƒoƒCƒiƒŠƒtƒ@ƒCƒ‹‚Ì‚Ý•K—v‚Èê‡‚ÍADLLsƒtƒHƒ‹ƒ_[“à‚ÌZIPƒtƒ@ƒCƒ‹‚ð‰ð“€‚·‚é‚±‚Æ‚Å—˜—p‰Â”\‚Å‚·B
+ƒ‰ƒCƒuƒ‰ƒŠ‚Ì—˜—p—á‚ÍATestAppƒtƒHƒ‹ƒ_[“à‚ÌŠeƒvƒƒWƒFƒNƒg‚ðŽQÆ‚µ‚Ä‚­‚¾‚³‚¢B
