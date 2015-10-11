@@ -1,8 +1,9 @@
 using System.Threading;
 using GrFamily.MainBoard;
 using GrFamily.Module;
+using LiquidCrystalTest;
 
-namespace LiquidCrystalTest
+namespace LiquidCrystalSakuraTest
 {
     public class Program
     {
@@ -19,7 +20,7 @@ namespace LiquidCrystalTest
 
             // GR-PEACHではコマンド間のウェイトなし動作する（ウェイトありでも問題ない）
             // GR -SAKURAではウェイトを入れないと誤動作する
-            lcd.InitDevice();
+            lcd.InitDevice(5);
 
             var runner = new LcdTestRunner(lcd);
             runner.Run();
