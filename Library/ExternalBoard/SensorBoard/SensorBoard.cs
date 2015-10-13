@@ -7,9 +7,8 @@ namespace GrFamily.ExternalBoard
     {
         // サーミスターの入力チャンネル
         private readonly Cpu.AnalogChannel _tempChannel;
-        // 加速度センサーのアドレス
-        private readonly ushort _accelerometerAddress;
-
+        // 加速度センサーのI2Cアドレス
+        private readonly ushort _accelerometerAddress = 0x1d;
 
         private const double Bc = 3435;         // 103ATのB定数
         private const double R25 = 10000;       // 103ATの25度でのゼロ負荷抵抗値
@@ -54,7 +53,6 @@ namespace GrFamily.ExternalBoard
         public SensorBoard(double vr1)
         {
             _tempChannel = Pins.ANALOG_5;
-            _accelerometerAddress = (ushort) Pins.GPIO_PIN_A4;
             _vr1 = vr1;
         }
     }
