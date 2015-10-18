@@ -27,5 +27,13 @@ namespace GrFamily.MainBoard
         public const Cpu.Pin GPIO_PIN_A3 = (Cpu.Pin)51;
         public const Cpu.Pin GPIO_PIN_A4 = (Cpu.Pin)52;
         public const Cpu.Pin GPIO_PIN_A5 = (Cpu.Pin)53;
+
+        // GR-SAKURA のアナログチャンネル
+        public const Cpu.AnalogChannel ANALOG_0 = (Cpu.AnalogChannel)0;
+        public const Cpu.AnalogChannel ANALOG_1 = (Cpu.AnalogChannel)1;
+        public const Cpu.AnalogChannel ANALOG_2 = (Cpu.AnalogChannel)2;
+        public const Cpu.AnalogChannel ANALOG_3 = (Cpu.AnalogChannel)3;
+        public const Cpu.AnalogChannel ANALOG_4 = (Cpu.AnalogChannel)4;
+        public const Cpu.AnalogChannel ANALOG_5 = (Cpu.AnalogChannel)5;
     }
 }
