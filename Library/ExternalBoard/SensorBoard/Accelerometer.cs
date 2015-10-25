@@ -9,7 +9,6 @@ namespace GrFamily.ExternalBoard
         private const byte DataFormat = 0x31;
         private const byte DataX0 = 0x32;
 
-
         private readonly I2CDevice _i2C;
         private readonly int _timeout;
         private readonly byte[] _adata = new byte[1];
