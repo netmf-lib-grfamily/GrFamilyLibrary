@@ -9,6 +9,7 @@
 ・SensorBoard ・・・ PinKit のセンサーボード（温度、3軸加速度センサー）
 ・NetworkUtility ・・・ 有線LAN の初期化処理
 ・LiquidCrystal ・・・ キャラクターディスプレイクラス（HD44780 互換）
+・AnalogSensor ・・・ アナログ入力の汎用センサークラス
 
 
 対象の .NET Micro Framework のバージョンは、4.3 QFE2 です。
