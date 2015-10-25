@@ -6,7 +6,7 @@
 
 ・Peach ・・・ GR-PEACH クラス
 ・Sakura ・・・ GR-SAKURA クラス
-・SensorBoard ・・・ PinKit のセンサーボード（温度、3軸加速度センサー）
+・SensorBoard ・・・ PinKit のセンサーボード（温度、3軸加速度、ブロック端子台）
 ・NetworkUtility ・・・ 有線LAN の初期化処理
 ・LiquidCrystal ・・・ キャラクターディスプレイクラス（HD44780 互換）
 ・AnalogSensor ・・・ アナログ入力の汎用センサークラス

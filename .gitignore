@@ -194,3 +194,5 @@ TestApp/Module/LiquidCrystalTest/OnBoardFlash.dat
 TestApp/Module/LiquidCrystalTest/OnBoardFlash.dat.smd
 TestApp/Module/AnalogSensorTest/OnBoardFlash.dat
 TestApp/Module/AnalogSensorTest/OnBoardFlash.dat.smd
+TestApp/SensorBoard/SensorTerminalTest/OnBoardFlash.dat
+TestApp/SensorBoard/SensorTerminalTest/OnBoardFlash.dat.smd
