@@ -19,8 +19,8 @@ namespace GrFamily.ExternalBoard
         private const double DefaultVr1 = 5000;     // サーミスターの分圧抵抗値（VR1を中間に設定した状態をデフォルトとする）
         private const double DefaultVr2 = 5000;     // ブロック端子台の分圧抵抗値 (VR2を中間に設定した状態をデフォルトとする）
 
-        private const int DefaultAccelClockRateKhz = 100;
-        private const int DefaultAccelTimeout = 1000;
+        private const int DefaultClockRateKhz = 100;
+        private const int DefaultTimeout = 1000;
 
         private Temperature _temperature;
         private SensorTerminal _terminal;
@@ -51,7 +51,7 @@ namespace GrFamily.ExternalBoard
             {
                 if (_accelerometer == null)
                 {
-                    var i2C = new I2CDevice(new I2CDevice.Configuration(_accelerometerAddress, DefaultAccelClockRateKhz));
+                    var i2C = new I2CDevice(new I2CDevice.Configuration(_accelerometerAddress, DefaultClockRateKhz));
                     _accelerometer = new Accelerometer(i2C, 1000);
                 }
 

@@ -1,14 +1,21 @@
 using System;
 using System.Threading;
+using Microsoft.SPOT;
 using Microsoft.SPOT.Hardware;
 
-namespace GrFamily.ExternalBoard
+namespace GrFamily.Module
 {
-    public class Accelerometer
+    public class Adxl345
     {
+        // 加速度センサーのI2Cアドレス
+        private readonly ushort _accelerometerAddress = 0x1d;
+
         private const byte PowerCtl = 0x2d;
         private const byte DataFormat = 0x31;
         private const byte DataX0 = 0x32;
+
+        private const int DefaultClockRateKhz = 100;
+        private const int DefaultTimeout = 1000;
 
         private readonly I2CDevice _i2C;
         private readonly int _timeout;
@@ -23,18 +30,18 @@ namespace GrFamily.ExternalBoard
 
         private byte[] _xyz = new byte[6];
 
-        internal Accelerometer(I2CDevice i2C, int timeout)
+        public Adxl345()
         {
-            _i2C = i2C;
-            _timeout = timeout;
+            _i2C = new I2CDevice(new I2CDevice.Configuration(_accelerometerAddress, DefaultClockRateKhz));
+            _timeout = DefaultTimeout;
             MeasurementRange = Range.FourG;
 
             ToWakeup();
-            
+
             Thread.Sleep(10);
         }
 
-        public void ToWakeup()
+        private void ToWakeup()
         {
             RegWriteMask(PowerCtl, 0x00, 0x04);
         }
@@ -50,7 +57,7 @@ namespace GrFamily.ExternalBoard
         // 0 - 1: +-4g
         // 1 - 0: +-8g
         // 1 - 1: +-16g
-        public void SetDataFormat(byte n)
+        private void SetDataFormat(byte n)
         {
             RegWrite(DataFormat, n);
         }
@@ -103,7 +110,7 @@ namespace GrFamily.ExternalBoard
         public byte RegRead(byte reg)
         {
             _adata[0] = reg;
-            _trRegRead = new I2CDevice.I2CTransaction[] { 
+            _trRegRead = new I2CDevice.I2CTransaction[] {
                 I2CDevice.CreateWriteTransaction(_adata),
                 I2CDevice.CreateReadTransaction(_rdata) };
             _i2C.Execute(_trRegRead, _timeout);
@@ -113,7 +120,7 @@ namespace GrFamily.ExternalBoard
         public void RegReads(byte reg, ref byte[] data)
         {
             _adata[0] = reg;
-            _trRegRead = new I2CDevice.I2CTransaction[] { 
+            _trRegRead = new I2CDevice.I2CTransaction[] {
                 I2CDevice.CreateWriteTransaction(_adata),
                 I2CDevice.CreateReadTransaction(data) };
             _i2C.Execute(_trRegRead, _timeout);

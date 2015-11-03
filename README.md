@@ -6,11 +6,14 @@
 
 ・Peach ・・・ GR-PEACH クラス
 ・Sakura ・・・ GR-SAKURA クラス
+
 ・SensorBoard ・・・ PinKit のセンサーボード（温度、3軸加速度、ブロック端子台）
 ・NetworkUtility ・・・ 有線LAN の初期化処理
+
 ・AnalogSensor ・・・ アナログ入力の汎用センサークラス
-・I2CLiquidCrystal ・・・ I2C 接続のキャラクターディスプレイクラス
 ・LiquidCrystal ・・・ キャラクターディスプレイクラス（HD44780 互換）
+・I2CLiquidCrystal ・・・ I2C 接続のキャラクターディスプレイクラス
+・Accelerometer_Adxl345 ・・・ I2C 接続の加速度センサー（ADXL345）
 
 
 対象の .NET Micro Framework のバージョンは、4.3 QFE2 です。

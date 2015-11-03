@@ -7,7 +7,7 @@ namespace GrFamily.Module
     {
         //private static readonly ushort _acm1602n1Address = 0x50;     // ACM1602N1-FLW-FBW‚ÌƒAƒhƒŒƒX
 
-        private const int DefaultAccelClockRateKhz = 100;
+        private const int DefaultClockRateKhz = 100;
         private const int Timeout = 1000;
 
         private readonly I2CDevice _i2C;
@@ -25,7 +25,7 @@ namespace GrFamily.Module
 
         public I2CLiquidCrystal(ushort i2CAddress)
         {
-            _i2C = new I2CDevice(new I2CDevice.Configuration(i2CAddress, DefaultAccelClockRateKhz));
+            _i2C = new I2CDevice(new I2CDevice.Configuration(i2CAddress, DefaultClockRateKhz));
             InitModule();
         }
 

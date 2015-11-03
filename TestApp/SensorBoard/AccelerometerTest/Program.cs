@@ -20,7 +20,6 @@ namespace AccelerometerTest
                 Int16 y;
                 Int16 z;
 
-                _accelerometer.Measure();
                 _accelerometer.GetXYZ(out x, out y, out z);
                 Debug.Print("X = " + x + ", Y = " + y + ", Z = " + z);
 
