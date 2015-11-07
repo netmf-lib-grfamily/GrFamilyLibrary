@@ -36,6 +36,12 @@
     <Reference Include="Microsoft.SPOT.Hardware" />
     <Reference Include="Microsoft.SPOT.Native" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ModuleBase\ModuleBase\ModuleBase.csproj">
+      <Project>{0726683D-4E22-4FBF-8E5B-5EA43BCE3682}</Project>
+      <Name>ModuleBase</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Condition="EXISTS('$(NetMfTargetsBaseDir)$(TargetFrameworkVersion)\CSharp.Targets')" Project="$(NetMfTargetsBaseDir)$(TargetFrameworkVersion)\CSharp.Targets" />
   <Import Condition="!EXISTS('$(NetMfTargetsBaseDir)$(TargetFrameworkVersion)\CSharp.Targets')" Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

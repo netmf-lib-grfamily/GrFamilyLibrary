@@ -51,8 +51,7 @@ namespace GrFamily.ExternalBoard
             {
                 if (_accelerometer == null)
                 {
-                    var i2C = new I2CDevice(new I2CDevice.Configuration(_accelerometerAddress, DefaultClockRateKhz));
-                    _accelerometer = new Accelerometer(i2C, 1000);
+                    _accelerometer = new Accelerometer(_accelerometerAddress);
                 }
 
                 return _accelerometer;

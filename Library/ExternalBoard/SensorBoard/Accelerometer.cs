@@ -1,32 +1,22 @@
 using System;
 using System.Threading;
 using Microsoft.SPOT.Hardware;
+using GrFamily.Module;
 
 namespace GrFamily.ExternalBoard
 {
-    public class Accelerometer
+    public class Accelerometer : I2CDeviceEx
     {
         private const byte PowerCtl = 0x2d;
         private const byte DataFormat = 0x31;
         private const byte DataX0 = 0x32;
 
-        private readonly I2CDevice _i2C;
-        private readonly int _timeout;
-        private readonly byte[] _adata = new byte[1];
-        private readonly byte[] _rdata = new byte[1];
-        private readonly byte[] _wdata = new byte[2];
-
-        private I2CDevice.I2CTransaction[] _trRegRead;
-        private I2CDevice.I2CTransaction[] _trRegWrite;
-
         private Range _range;
 
         private byte[] _xyz = new byte[6];
 
-        internal Accelerometer(I2CDevice i2C, int timeout)
+        internal Accelerometer(ushort i2CAddress) : base(i2CAddress)
         {
-            _i2C = i2C;
-            _timeout = timeout;
             MeasurementRange = Range.FourG;
 
             ToWakeup();
@@ -98,42 +88,6 @@ namespace GrFamily.ExternalBoard
             x = (Int16)(((UInt16)_xyz[1] << 8) + (UInt16)_xyz[0]);
             y = (Int16)(((UInt16)_xyz[3] << 8) + (UInt16)_xyz[2]);
             z = (Int16)(((UInt16)_xyz[5] << 8) + (UInt16)_xyz[4]);
-        }
-
-        public byte RegRead(byte reg)
-        {
-            _adata[0] = reg;
-            _trRegRead = new I2CDevice.I2CTransaction[] { 
-                I2CDevice.CreateWriteTransaction(_adata),
-                I2CDevice.CreateReadTransaction(_rdata) };
-            _i2C.Execute(_trRegRead, _timeout);
-            return _rdata[0];
-        }
-
-        public void RegReads(byte reg, ref byte[] data)
-        {
-            _adata[0] = reg;
-            _trRegRead = new I2CDevice.I2CTransaction[] { 
-                I2CDevice.CreateWriteTransaction(_adata),
-                I2CDevice.CreateReadTransaction(data) };
-            _i2C.Execute(_trRegRead, _timeout);
-        }
-
-        public void RegWrite(byte reg, byte val)
-        {
-            _wdata[0] = reg;
-            _wdata[1] = val;
-            _trRegWrite = new I2CDevice.I2CTransaction[] { I2CDevice.CreateWriteTransaction(_wdata) };
-            _i2C.Execute(_trRegWrite, _timeout);
-        }
-
-        public void RegWriteMask(byte reg, byte val, byte mask)
-        {
-            var tmp = RegRead(reg);
-            _wdata[0] = reg;
-            _wdata[1] = (byte)(((int)tmp & ~(int)mask) | ((int)val & (int)mask));
-            _trRegWrite = new I2CDevice.I2CTransaction[] { I2CDevice.CreateWriteTransaction(_wdata) };
-            _i2C.Execute(_trRegWrite, _timeout);
         }
 
         public enum Range

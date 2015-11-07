@@ -53,6 +53,10 @@
       <Project>{8775C27A-34B4-4546-88C7-EF219ED5E06A}</Project>
       <Name>Peach</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Library\ModuleBase\ModuleBase\ModuleBase.csproj">
+      <Project>{0726683D-4E22-4FBF-8E5B-5EA43BCE3682}</Project>
+      <Name>ModuleBase</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Library\Module\Accelerometer_Adxl345\Accelerometer_Adxl345.csproj">
       <Project>{3A598CE1-2B2D-4A41-8A36-B2542D19625B}</Project>
       <Name>Accelerometer_Adxl345</Name>

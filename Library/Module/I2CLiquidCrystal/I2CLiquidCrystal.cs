@@ -1,31 +1,24 @@
 using System.Threading;
 using Microsoft.SPOT.Hardware;
+using GrFamily.Module;
 
 namespace GrFamily.Module
 {
-    public class I2CLiquidCrystal
+    public class I2CLiquidCrystal : I2CDeviceEx
     {
-        //private static readonly ushort _acm1602n1Address = 0x50;     // ACM1602N1-FLW-FBWのアドレス
-
-        private const int DefaultClockRateKhz = 100;
-        private const int Timeout = 1000;
-
-        private readonly I2CDevice _i2C;
-        private readonly byte[] _adata = new byte[1];
-        private readonly byte[] _rdata = new byte[1];
-        private readonly byte[] _wdata = new byte[2];
-        //private I2CDevice.I2CTransaction[] _trRegRead;
-        private I2CDevice.I2CTransaction[] _trRegWrite;
-
         private bool _displayOn = true;       // ディスプレイをオンにするか
         private bool _cursorOn = false;         // カーソルを表示するかどうか
         private bool _blinkOn = false;          // カーソル位置でブリンクするか
 
+        private readonly bool _printWithStopBit;
+        private readonly bool _useExFunctionSet;
+
         private readonly int _commandWait = 1;            // コマンド実行後のウェイト
 
-        public I2CLiquidCrystal(ushort i2CAddress)
+        public I2CLiquidCrystal(ushort i2CAddress, bool printWithStopBit = false, bool useExFunctionSet = false) : base(i2CAddress)
         {
-            _i2C = new I2CDevice(new I2CDevice.Configuration(i2CAddress, DefaultClockRateKhz));
+            _printWithStopBit = printWithStopBit;
+            _useExFunctionSet = useExFunctionSet;
             InitModule();
         }
 
@@ -33,14 +26,30 @@ namespace GrFamily.Module
         {
             Thread.Sleep(1000);
 
-            WriteCommand(0x30, 5);      // 8ビットモードにセット + 5msウェイト
-            WriteCommand(0x30);         // 8ビットモードにセット
-            WriteCommand(0x30);         // 8ビットモードにセット
-            WriteCommand(0x38);         // 行数とフォントの設定
-            WriteCommand(0x80);         // 表示オフ
+            if (_useExFunctionSet)
+            {   // 拡張機能セットを使用するモジュール
+                WriteCommand(0x38);         // 標準機能セットを指定
+                WriteCommand(0x39);         // 拡張機能セットを指定
+                WriteCommand(0x14);         // 内部オシレーター周波数を指定
+                WriteCommand(0x70);         // コントラストを指定（下位4ビット）
+                WriteCommand(0x56);         // コントラストを指定 (上位4ビット)
+                WriteCommand(0x6c);         // フォロワーコントロール
+                WriteCommand(0x38);         // 標準機能セットに戻す
+                WriteCommand(0x0c);         // 表示オン
+            }
+            else
+            {   // 標準機能セットを使用するモジュール
+                WriteCommand(0x30, 5);      // 8ビットモードにセット + 5msウェイト
+                WriteCommand(0x30);         // 8ビットモードにセット
+                WriteCommand(0x30);         // 8ビットモードにセット
+                WriteCommand(0x38);         // 行数とフォントの設定
+                WriteCommand(0x80);         // 表示オフ
+            }
+
             WriteCommand(0x01);         // 表示クリア
             WriteCommand(0x06);         // カーソルと表示のシフト設定
-            WriteCommand(0x0f);         // カーソルとブリンクの表示をオン
+            WriteCommand(0x0c);         // カーソルとブリンクの表示をオフ
+            //WriteCommand(0x0f);         // カーソルとブリンクの表示をオン
 
             Thread.Sleep(100);
         }
@@ -102,6 +111,15 @@ namespace GrFamily.Module
             WriteCommand((byte)(0x80 | addr));
         }
 
+        public void SetContrast(byte contrast)
+        {
+            WriteCommand(0x39);
+            WriteCommand(0x14);
+            WriteCommand((byte)(0x70 | contrast));
+            WriteCommand(0x6c);
+            WriteCommand(0x38);
+        }
+
         private void ControlDisplay(bool displayOn, bool cursorOn, bool blinkOn)
         {
             var cmd = (byte)0x08;
@@ -117,23 +135,15 @@ namespace GrFamily.Module
 
         public void WriteCharactor(byte data)
         {
-            var reg = (byte)0x80;
-            WriteByte(reg, data);
+            var reg = _printWithStopBit ? (byte) 0x40 : (byte)0x80;
+            RegWrite(reg, data);
         }
 
         public void WriteCommand(byte cmd, int wait = 1)
         {
             var reg = (byte)0x00;
-            WriteByte(reg, cmd);
+            RegWrite(reg, cmd);
             Thread.Sleep(wait);
-        }
-
-        public void WriteByte(byte reg, byte val)
-        {
-            _wdata[0] = reg;
-            _wdata[1] = val;
-            _trRegWrite = new I2CDevice.I2CTransaction[] { I2CDevice.CreateWriteTransaction(_wdata) };
-            _i2C.Execute(_trRegWrite, Timeout);
         }
     }
 }
