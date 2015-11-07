@@ -111,15 +111,6 @@ namespace GrFamily.Module
             WriteCommand((byte)(0x80 | addr));
         }
 
-        public void SetContrast(byte contrast)
-        {
-            WriteCommand(0x39);
-            WriteCommand(0x14);
-            WriteCommand((byte)(0x70 | contrast));
-            WriteCommand(0x6c);
-            WriteCommand(0x38);
-        }
-
         private void ControlDisplay(bool displayOn, bool cursorOn, bool blinkOn)
         {
             var cmd = (byte)0x08;
