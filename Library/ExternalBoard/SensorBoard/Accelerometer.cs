@@ -23,8 +23,6 @@ namespace GrFamily.ExternalBoard
 
         public int Interval { get; set; } = -1;
 
-        public bool IsEnabled { get; set; } = true;
-
         internal Accelerometer(ushort i2CAddress) : base(i2CAddress)
         {
             _timer = new Timer(Measure_Timer, null, Timeout.Infinite, Timeout.Infinite);
@@ -116,7 +114,7 @@ namespace GrFamily.ExternalBoard
 
         public void StartTakingMeasurements()
         {
-            if (Interval > 0 && IsEnabled)
+            if (Interval > 0)
             {
                 var ts = new TimeSpan(Interval * 10000);
                 _timer.Change(ts, ts);
