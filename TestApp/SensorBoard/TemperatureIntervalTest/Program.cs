@@ -12,22 +12,30 @@ namespace TemperatureIntervalTest
         public static void Main()
         {
             _temperature = (new SensorBoard()).Temperature;
-            _temperature.MeasurementComplete += temperature_MeasurementComplete;
-            _temperature.MeasurementInterval = new TimeSpan(0, 0, 3);
+            //_temperature.Interval = new TimeSpan(0, 0, 1);
+            //_temperature.IsEnabled = true;
+            //_temperature.MeasurementComplete += temperature_MeasurementComplete;
 
-            Debug.Print("StartTakingMeasurements");
+            //Debug.Print("StartTakingMeasurements");
             _temperature.StartTakingMeasurements();
 
-            Thread.Sleep(30000);
-
-            _temperature.StopTakingMeasurements();
-            Debug.Print("StopTakingMeasurements");
+            while (true) { }
         }
+
+        private static int _measureCount = 0;
 
         static void temperature_MeasurementComplete(Temperature sender, Temperature.MeasurementCompleteEventArgs e)
         {
+            if (_measureCount >= 30)
+            {
+                _temperature.StopTakingMeasurements();
+                return;
+            }
+
             var temp = e.Temperature;
             Debug.Print(temp.ToString());
+
+            _measureCount++;
         }
     }
 }

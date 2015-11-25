@@ -9,8 +9,9 @@ namespace GrFamily.ExternalBoard
         private readonly Cpu.AnalogChannel _tempChannel;
         // ブロック端子台の入力チャンネル
         private readonly Cpu.AnalogChannel _termChannel;
+
         // 加速度センサーのI2Cアドレス
-        private readonly ushort _accelerometerAddress = 0x1d;
+        private const ushort AccelerometerAddress = 0x1d;
 
         private const double Bc = 3435;         // 103ATのB定数
         private const double R25 = 10000;       // 103ATの25度でのゼロ負荷抵抗値
@@ -47,15 +48,7 @@ namespace GrFamily.ExternalBoard
 
         public Accelerometer Accelerometer
         {
-            get
-            {
-                if (_accelerometer == null)
-                {
-                    _accelerometer = new Accelerometer(_accelerometerAddress);
-                }
-
-                return _accelerometer;
-            }
+            get { return _accelerometer ?? (_accelerometer = new Accelerometer(AccelerometerAddress)); }
         }
 
         public SensorBoard() : this(DefaultVr1, DefaultVr2)

@@ -20,6 +20,12 @@ namespace GrFamily.ExternalBoard
         private readonly double _vrd;           // 分圧抵抗値
         private readonly double _adc;           // ADコンバーターの分解能
 
+        private readonly Timer _timer;
+
+        public int Interval { get; set; } = -1;
+
+        public bool IsEnabled { get; set; } = true;
+
         internal Temperature(Cpu.AnalogChannel channel, double bc, double r25, double vrd, double adc)
         {
             _temperatureInput = new AnalogInput(channel);
@@ -27,62 +33,39 @@ namespace GrFamily.ExternalBoard
             _r25 = r25;
             _vrd = vrd;
             _adc = adc;
+
+            _timer = new Timer(Measure_Timer, null, Timeout.Infinite, Timeout.Infinite);
         }
 
         public double TakeMeasurement()
         {
-            var raw = _temperatureInput.ReadRaw();
-            return 1 / (Math.Log(_vrd * raw / (_adc - raw) / _r25) / _bc + 1 / T25) - Tk;
+            lock (this)
+            {
+                var raw = _temperatureInput.ReadRaw();
+                return 1 / (Math.Log(_vrd * raw / (_adc - raw) / _r25) / _bc + 1 / T25) - Tk;
+            }
         }
 
-        public TimeSpan MeasurementInterval { get; set; }
+        private void Measure_Timer(object state)
+        {
+            if (MeasurementComplete == null)
+                return;
 
-        private Thread _measureThread;
+            MeasurementComplete(this, new MeasurementCompleteEventArgs { Temperature = TakeMeasurement() });
+        }
 
         public void StartTakingMeasurements()
         {
-            if (MeasurementInterval.Ticks == 0)
-                throw new InvalidOperationException("MeasurementInterval must be set before calling StartTakingMeasurements()");
-
-            if (_measureThread != null)
+            if (Interval > 0 && IsEnabled)
             {
-                switch (_measureThread.ThreadState)
-                {
-                    case ThreadState.Running:
-                        return;
-                    case ThreadState.Suspended:
-                        _measureThread.Resume();
-                        return;
-                }
+                var ts = new TimeSpan(Interval * 10000);
+                _timer.Change(ts, ts);
             }
-
-            var interval = MeasurementInterval.Days * 24 * 60 * 60 * 1000
-                + MeasurementInterval.Hours * 60 * 60 * 1000
-                + MeasurementInterval.Minutes * 60 * 1000
-                + MeasurementInterval.Seconds * 1000
-                + MeasurementInterval.Milliseconds;
-
-            _measureThread = new Thread(() =>
-            {
-                while (true)
-                {
-                    if (MeasurementComplete != null)
-                        MeasurementComplete(this, new MeasurementCompleteEventArgs { Temperature = TakeMeasurement() });
-
-                    Thread.Sleep(interval);
-                }
-            });
-
-            _measureThread.Start();
         }
 
         public void StopTakingMeasurements()
         {
-            if (_measureThread != null)
-            {
-                _measureThread.Abort();
-                _measureThread = null;
-            }
+            _timer.Change(Timeout.Infinite, Timeout.Infinite);
         }
 
         public class MeasurementCompleteEventArgs

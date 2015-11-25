@@ -23,7 +23,7 @@ namespace AccelerometerTest
                 _accelerometer.GetXYZ(out x, out y, out z);
                 Debug.Print("X = " + x + ", Y = " + y + ", Z = " + z);
 
-                Thread.Sleep(3000);
+                Thread.Sleep(1000);
             }
         }
     }

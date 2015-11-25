@@ -11,6 +11,8 @@ namespace SensorTerminalTest
         private Peach _peach;
         private SensorTerminal _sensor;
 
+        private Timer _testTimer = null;
+
         public static void Main()
         {
             var prog = new Program();
@@ -32,7 +34,6 @@ namespace SensorTerminalTest
         }
 
         private int _testCase = 0;
-        private Timer _testTimer = null;
 
         private void Button_ButtonPressed(GrFamily.MainBoard.Button sender, GrFamily.MainBoard.Button.ButtonState state)
         {
@@ -41,12 +42,12 @@ namespace SensorTerminalTest
             switch (_testCase)
             {
                 case 0:
-                    _sensor.Enabled = false;
+                    _sensor.StopTakingMeasurements();
                     _testTimer.Change(new TimeSpan(0, 0, 1), new TimeSpan(0, 0, 1));
                     break;
                 default:
                     _testTimer.Change(Timeout.Infinite, Timeout.Infinite);
-                    _sensor.Enabled = true;
+                    _sensor.StartTakingMeasurements();
                     break;
             }
         }

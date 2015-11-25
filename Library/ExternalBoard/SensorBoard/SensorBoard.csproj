@@ -41,6 +41,8 @@
   <ItemGroup>
     <Reference Include="Microsoft.SPOT.Hardware" />
     <Reference Include="Microsoft.SPOT.Native" />
+    <Reference Include="Microsoft.SPOT.Time" />
+    <Reference Include="Microsoft.SPOT.TinyCore" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MainBoard\Peach\Peach.csproj">

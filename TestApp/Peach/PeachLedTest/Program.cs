@@ -41,8 +41,8 @@ namespace PeachLedTest
         static void Button_ButtonPressed(Button sender, Button.ButtonState state)
         {
             // テスト用のスレッドが動作していれば破棄
-            if (_th != null && _th.IsAlive)
-                _th.Abort();
+            if (_th != null)
+                _th.Suspend();
 
             // 次のテストの前に全ての LED を消す
             _peach.TurnAllLedsOff();

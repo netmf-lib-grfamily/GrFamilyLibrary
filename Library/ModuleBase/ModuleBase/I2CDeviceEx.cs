@@ -51,7 +51,7 @@ namespace GrFamily.Module
         {
             var tmp = RegRead(reg);
             _wdata[0] = reg;
-            _wdata[1] = (byte)(((int)tmp & ~(int)mask) | ((int)val & (int)mask));
+            _wdata[1] = (byte)(tmp & ~(int)mask | ((int)val & (int)mask));
             _trRegWrite = new I2CDevice.I2CTransaction[] { I2CDevice.CreateWriteTransaction(_wdata) };
             _i2C.Execute(_trRegWrite, _timeout);
         }

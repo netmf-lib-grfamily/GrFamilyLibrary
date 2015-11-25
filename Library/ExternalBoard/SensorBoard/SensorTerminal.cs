@@ -13,51 +13,23 @@ namespace GrFamily.ExternalBoard
 
         private readonly AnalogInput _sensor;
 
-        private Timer _timer = null;
+        private readonly Timer _timer;
 
         public SensorTerminal(Cpu.AnalogChannel channel, double vr)
         {
             _sensor = new AnalogInput(channel);
+
+            _timer = new Timer(Measure_Timer, null, Timeout.Infinite, Timeout.Infinite);
         }
 
-        private int _interval = 0;
+        public int Interval { get; set; } = -1;
 
-        public int Interval
-        {
-            get { return _interval; }
-            set
-            {
-                _interval = value;
-                SetTimer();
-            }
-        }
-
-        private bool _enabled = false;
-
-        public bool Enabled
-        {
-            get { return _enabled; }
-            set
-            {
-                _enabled = value;
-                SetTimer();
-            }
-        }
-
-        private void SetTimer()
-        {
-            if (_timer == null)
-                _timer = new Timer(Measure_Timer, null, Timeout.Infinite, Timeout.Infinite);
-
-            if (_interval > 0 && _enabled)
-                _timer.Change(new TimeSpan(0, 0, 0, 0, _interval), new TimeSpan(0, 0, 0, 0, _interval));
-            else
-                _timer.Change(Timeout.Infinite, Timeout.Infinite);
-        }
+        public bool IsEnabled { get; set; } = true;
 
         private void Measure_Timer(object state)
         {
-            if (MeasurementComplete == null) return;
+            if (MeasurementComplete == null)
+                return;
 
             var result = new MeasurementCompleteEventArgs
             {
@@ -67,14 +39,34 @@ namespace GrFamily.ExternalBoard
             MeasurementComplete(this, result);
         }
 
+        public void StartTakingMeasurements()
+        {
+            if (Interval > 0 && IsEnabled)
+            {
+                var ts = new TimeSpan(Interval * 10000);
+                _timer.Change(ts, ts);
+            }
+        }
+
+        public void StopTakingMeasurements()
+        {
+            _timer.Change(Timeout.Infinite, Timeout.Infinite);
+        }
+
         public int ReadRaw()
         {
-            return _sensor.ReadRaw();
+            lock (this)
+            {
+                return _sensor.ReadRaw();
+            }
         }
 
         public double Read()
         {
-            return _sensor.Read();
+            lock (this)
+            {
+                return _sensor.Read();
+            }
         }
 
 
