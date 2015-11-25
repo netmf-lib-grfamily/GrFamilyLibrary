@@ -4,11 +4,11 @@ using Microsoft.SPOT.Hardware;
 
 namespace GrFamily.ExternalBoard
 {
-    public delegate void MeasurementCompleteEventHandler(Temperature sender, Temperature.MeasurementCompleteEventArgs e);
+    public delegate void TemperatureMeasurementCompleteEventHandler(Temperature sender, Temperature.MeasurementCompleteEventArgs e);
 
     public class Temperature
     {
-        public event MeasurementCompleteEventHandler MeasurementComplete;
+        public event TemperatureMeasurementCompleteEventHandler MeasurementComplete;
 
         private const double Tk = 273;          // â‘Î‰·“x‚ÆÛ‰·“x‚Æ‚Ì·
         private const double T25 = Tk + 25;     // Û25“x
