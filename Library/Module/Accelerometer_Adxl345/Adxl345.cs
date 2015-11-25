@@ -5,8 +5,12 @@ using GrFamily.Module;
 
 namespace GrFamily.Module
 {
+    public delegate void Adxl345MeasurementCompleteEventHandler(Adxl345 sender, Adxl345.MeasurementCompleteEventArgs e);
+
     public class Adxl345 : I2CDeviceEx
     {
+        public event Adxl345MeasurementCompleteEventHandler MeasurementComplete;
+
         // ADXL345‚ÌI2CƒAƒhƒŒƒX
         private static readonly ushort AccelerometerAddress = 0x1d;
 
@@ -18,10 +22,17 @@ namespace GrFamily.Module
 
         private byte[] _xyz = new byte[6];
 
+        private readonly Timer _timer;
+
+        public int Interval { get; set; } = -1;
+
+        public bool IsEnabled { get; set; } = true;
+
         public Adxl345() : base(AccelerometerAddress)
         {
-            MeasurementRange = Range.FourG;
+            _timer = new Timer(Measure_Timer, null, Timeout.Infinite, Timeout.Infinite);
 
+            MeasurementRange = Range.FourG;
             ToWakeup();
 
             Thread.Sleep(10);
@@ -93,11 +104,45 @@ namespace GrFamily.Module
             z = (Int16)(((UInt16)_xyz[5] << 8) + (UInt16)_xyz[4]);
         }
 
+        private void Measure_Timer(object state)
+        {
+            if (MeasurementComplete == null)
+                return;
+
+            Int16 x;
+            Int16 y;
+            Int16 z;
+            GetXYZ(out x, out y, out z);
+
+            MeasurementComplete(this, new MeasurementCompleteEventArgs() { X = x, Y = y, Z = z });
+        }
+
+        public void StartTakingMeasurements()
+        {
+            if (Interval > 0 && IsEnabled)
+            {
+                var ts = new TimeSpan(Interval * 10000);
+                _timer.Change(ts, ts);
+            }
+        }
+
+        public void StopTakingMeasurements()
+        {
+            _timer.Change(Timeout.Infinite, Timeout.Infinite);
+        }
+
         public enum Range
         {
             TwoG = (byte)0x00,
             FourG = (byte)0x01,
             EightG = (byte)0x10
+        }
+
+        public class MeasurementCompleteEventArgs
+        {
+            public Int16 X;
+            public Int16 Y;
+            public Int16 Z;
         }
     }
 }
