@@ -12,11 +12,11 @@ namespace GrFamily.Utility
         /// <summary>
         /// NICを初期化する
         /// </summary>
-        /// <param name="initialWait">初期化開始前の待ち時間（単位：ミリ秒、デフォルト値=3000ms）</param>
+        /// <param name="initialWait">初期化開始前の待ち時間（単位：ミリ秒、デフォルト値=1000ms）</param>
         /// <returns>IPアドレス</returns>
-        public static string InitNetwork(int initialWait = 3000)
+        public static string InitNetwork(int initialWait = 1000)
         {
-            Thread.Sleep(3000);
+            Thread.Sleep(initialWait);
 
             foreach (var ni in NetworkInterface.GetAllNetworkInterfaces())
             {

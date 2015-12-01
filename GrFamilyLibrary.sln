@@ -75,6 +75,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ModuleBase", "ModuleBase", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleBase", "Library\ModuleBase\ModuleBase\ModuleBase.csproj", "{0726683D-4E22-4FBF-8E5B-5EA43BCE3682}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemTimeInitializerTest", "TestApp\Utility\SystemTimeInitializerTest\SystemTimeInitializerTest.csproj", "{222148BC-D5C1-4C87-97D2-48778281DE24}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -207,6 +209,12 @@ Global
 		{0726683D-4E22-4FBF-8E5B-5EA43BCE3682}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0726683D-4E22-4FBF-8E5B-5EA43BCE3682}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0726683D-4E22-4FBF-8E5B-5EA43BCE3682}.Release|Any CPU.Build.0 = Release|Any CPU
+		{222148BC-D5C1-4C87-97D2-48778281DE24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{222148BC-D5C1-4C87-97D2-48778281DE24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{222148BC-D5C1-4C87-97D2-48778281DE24}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{222148BC-D5C1-4C87-97D2-48778281DE24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{222148BC-D5C1-4C87-97D2-48778281DE24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{222148BC-D5C1-4C87-97D2-48778281DE24}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -246,5 +254,6 @@ Global
 		{FD014E34-6BA9-4B59-A46A-315231EAAE0E} = {4202B5AE-5E63-4A90-8550-09F327823CFB}
 		{A0DFD86B-2C20-4498-8787-584E9689B29A} = {BAC06E1F-2E61-45CE-8B99-EE52B49FC104}
 		{0726683D-4E22-4FBF-8E5B-5EA43BCE3682} = {A0DFD86B-2C20-4498-8787-584E9689B29A}
+		{222148BC-D5C1-4C87-97D2-48778281DE24} = {935858E2-C02C-41D0-B2B7-2614C2193CF7}
 	EndGlobalSection
 EndGlobal

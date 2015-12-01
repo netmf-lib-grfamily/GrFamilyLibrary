@@ -33,18 +33,6 @@ namespace Adxl345Test
             _testTimer = new Timer(PollingMeasure, null, new TimeSpan(0, 0, 1), new TimeSpan(0, 0, 1));
 
             while (true) { }
-
-            //while (true)
-            //{
-            //    short x;
-            //    short y;
-            //    short z;
-
-            //    accel.GetXYZ(out x, out y, out z);
-            //    Debug.Print("x = " + x.ToString() + ", y = " + y.ToString() + ", z = " + z.ToString());
-
-            //    Thread.Sleep(3000);
-            //}
         }
 
         private int _testCase = 0;

@@ -198,3 +198,5 @@ TestApp/SensorBoard/SensorTerminalTest/OnBoardFlash.dat
 TestApp/SensorBoard/SensorTerminalTest/OnBoardFlash.dat.smd
 TestApp/Module/I2CLiquidCrystalTest/OnBoardFlash.dat.smd
 TestApp/Module/I2CLiquidCrystalTest/OnBoardFlash.dat
+TestApp/Sakura/SakuraLedTest/OnBoardFlash.dat
+TestApp/Sakura/SakuraLedTest/OnBoardFlash.dat.smd

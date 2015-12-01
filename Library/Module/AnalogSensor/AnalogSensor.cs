@@ -49,7 +49,7 @@ namespace GrFamily.Module
                 _timer = new Timer(Measure_Timer, null, Timeout.Infinite, Timeout.Infinite);
 
             if (_interval > 0 && _enabled)
-                _timer.Change(new TimeSpan(0, 0, 0, 0, _interval), new TimeSpan(0, 0, 0, 0, _interval));
+                _timer.Change(new TimeSpan(_interval * 10000), new TimeSpan(_interval * 10000));
             else
                 _timer.Change(Timeout.Infinite, Timeout.Infinite);
         }
