@@ -1,24 +1,28 @@
 # GrFamilyLibrary
 .NET Micro Framework Class Library for GR Family Boards
 
-‚±‚Ìƒ\ƒŠƒ…[ƒVƒ‡ƒ“‚ÍAGRƒtƒ@ƒ~ƒŠ[‚Ì .NET Micro Framework—pƒ‰ƒCƒuƒ‰ƒŠ‚Å‚·B
-iGR-PEACH, GR-SAKURA, ƒZƒ“ƒT[ƒ{[ƒhAÚ‘±‰Â”\‚ÈŠeŽíƒZƒ“ƒT[ƒfƒoƒCƒXj
+ã“ã®ã‚½ãƒªãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³ã¯ã€GRãƒ•ã‚¡ãƒŸãƒªãƒ¼ã® .NET Micro Frameworkç”¨ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã§ã™ã€‚
+ï¼ˆGR-PEACH, GR-SAKURA, ã‚»ãƒ³ã‚µãƒ¼ãƒœãƒ¼ãƒ‰ã€æŽ¥ç¶šå¯èƒ½ãªå„ç¨®ã‚»ãƒ³ã‚µãƒ¼ãƒ‡ãƒã‚¤ã‚¹ï¼‰
 
-EPeach EEE GR-PEACH ƒNƒ‰ƒX
-ESakura EEE GR-SAKURA ƒNƒ‰ƒX
+ãƒ»Peach ãƒ»ãƒ»ãƒ» GR-PEACH ã‚¯ãƒ©ã‚¹
+ãƒ»Sakura ãƒ»ãƒ»ãƒ» GR-SAKURA ã‚¯ãƒ©ã‚¹
 
-ESensorBoard EEE PinKit ‚ÌƒZƒ“ƒT[ƒ{[ƒhi‰·“xA3Ž²‰Á‘¬“xAƒuƒƒbƒN’[Žq‘äj
-ENetworkUtility EEE —LüLAN ‚Ì‰Šú‰»ˆ— / NTPƒT[ƒo[‚©‚ç“úŽž“¯Šú
+ãƒ»SensorBoard ãƒ»ãƒ»ãƒ» PinKit ã®ã‚»ãƒ³ã‚µãƒ¼ãƒœãƒ¼ãƒ‰ï¼ˆæ¸©åº¦ã€3è»¸åŠ é€Ÿåº¦ã€ãƒ–ãƒ­ãƒƒã‚¯ç«¯å­å°ï¼‰
+ãƒ»NetworkUtility ãƒ»ãƒ»ãƒ» æœ‰ç·šLAN ã®åˆæœŸåŒ–å‡¦ç† / NTPã‚µãƒ¼ãƒãƒ¼ã‹ã‚‰æ—¥æ™‚åŒæœŸ
 
-EAnalogSensor EEE ƒAƒiƒƒO“ü—Í‚Ì”Ä—pƒZƒ“ƒT[ƒNƒ‰ƒX
-ELiquidCrystal EEE ƒLƒƒƒ‰ƒNƒ^[ƒfƒBƒXƒvƒŒƒCƒNƒ‰ƒXiHD44780 ŒÝŠ·j
-EI2CLiquidCrystal EEE I2C Ú‘±‚ÌƒLƒƒƒ‰ƒNƒ^[ƒfƒBƒXƒvƒŒƒCƒNƒ‰ƒX
-EAccelerometer_Adxl345 EEE I2C Ú‘±‚Ì‰Á‘¬“xƒZƒ“ƒT[iADXL345j
+ãƒ»AnalogSensor ãƒ»ãƒ»ãƒ» ã‚¢ãƒŠãƒ­ã‚°å…¥åŠ›ã®æ±Žç”¨ã‚»ãƒ³ã‚µãƒ¼ã‚¯ãƒ©ã‚¹
+ãƒ»LiquidCrystal ãƒ»ãƒ»ãƒ» ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ã‚¯ãƒ©ã‚¹ï¼ˆHD44780 äº’æ›ï¼‰
+ãƒ»I2CLiquidCrystal ãƒ»ãƒ»ãƒ» I2C æŽ¥ç¶šã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ã‚¯ãƒ©ã‚¹
+ãƒ»Accelerometer_Adxl345 ãƒ»ãƒ»ãƒ» I2C æŽ¥ç¶šã®åŠ é€Ÿåº¦ã‚»ãƒ³ã‚µãƒ¼ï¼ˆADXL345ï¼‰
 
 
-‘ÎÛ‚Ì .NET Micro Framework ‚Ìƒo[ƒWƒ‡ƒ“‚ÍA4.3 QFE2 ‚Å‚·B
+å¯¾è±¡ã® .NET Micro Framework ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã¯ã€4.3 QFE2 ã§ã™ã€‚
 
-ƒ‰ƒCƒuƒ‰ƒŠiLibraryƒtƒHƒ‹ƒ_[jA‚¨‚æ‚Ñƒ‰ƒCƒuƒ‰ƒŠ‚ð—˜—p‚·‚éƒAƒvƒŠƒP[ƒVƒ‡ƒ“iTestAppƒtƒHƒ‹ƒ_[j‚Æ‚àAVisual Studio 2015 ‚Åƒrƒ‹ƒh‚Å‚«‚Ü‚·B
+ãƒ©ã‚¤ãƒ–ãƒ©ãƒªï¼ˆLibraryãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ï¼‰ã€ãŠã‚ˆã³ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’åˆ©ç”¨ã™ã‚‹ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ï¼ˆTestAppãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ï¼‰ã¨ã‚‚ã€Visual Studio 2015 ã§ãƒ“ãƒ«ãƒ‰ã§ãã¾ã™ã€‚
 
-ƒ‰ƒCƒuƒ‰ƒŠ‚ÌƒoƒCƒiƒŠƒtƒ@ƒCƒ‹‚Ì‚Ý•K—v‚Èê‡‚ÍADLLsƒtƒHƒ‹ƒ_[“à‚ÌZIPƒtƒ@ƒCƒ‹‚ð‰ð“€‚·‚é‚±‚Æ‚Å—˜—p‰Â”\‚Å‚·B
-ƒ‰ƒCƒuƒ‰ƒŠ‚Ì—˜—p—á‚ÍATestAppƒtƒHƒ‹ƒ_[“à‚ÌŠeƒvƒƒWƒFƒNƒg‚ðŽQÆ‚µ‚Ä‚­‚¾‚³‚¢B
+ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®ãƒã‚¤ãƒŠãƒªãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿å¿…è¦ãªå ´åˆã¯ã€DLLsãƒ•ã‚©ãƒ«ãƒ€ãƒ¼å†…ã®ZIPãƒ•ã‚¡ã‚¤ãƒ«ã‚’è§£å‡ã™ã‚‹ã“ã¨ã§åˆ©ç”¨å¯èƒ½ã§ã™ã€‚
+ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®åˆ©ç”¨ä¾‹ã¯ã€TestAppãƒ•ã‚©ãƒ«ãƒ€ãƒ¼å†…ã®å„ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
+
+
+## License
+MIT
