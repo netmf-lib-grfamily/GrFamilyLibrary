@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GrFamily.Module.I2CLiquidCrystal</name>
+    </assembly>
+    <members>
+        <member name="T:GrFamily.Module.I2CLiquidCrystal">
+            <summary>
+            I2C接続の液晶キャラクターディスプレイ
+            </summary>
+        </member>
+        <member name="F:GrFamily.Module.I2CLiquidCrystal._displayOn">
+            <summary>ディスプレイをオンにするかどうか</summary>
+        </member>
+        <member name="F:GrFamily.Module.I2CLiquidCrystal._cursorOn">
+            <summary>カーソルを表示するかどうか</summary>
+        </member>
+        <member name="F:GrFamily.Module.I2CLiquidCrystal._blinkOn">
+            <summary>カーソル位置でブリンクするかどうか</summary>
+        </member>
+        <member name="F:GrFamily.Module.I2CLiquidCrystal._printWithStopBit">
+            <summary>ストップビット草深のタイミングでキャラクター出力を行うかどうか</summary>
+        </member>
+        <member name="F:GrFamily.Module.I2CLiquidCrystal._useExFunctionSet">
+            <summary>HD44780互換の拡張コマンドを使用するかどうか</summary>
+            <remarks>拡張コマンドを使用するかどうかはモジュールによって決まる</remarks>
+        </member>
+        <member name="F:GrFamily.Module.I2CLiquidCrystal._commandWait">
+            <summary>コマンド実行後のウェイトタイム（単位：ミリ秒）</summary>
+        </member>
+        <member name="M:GrFamily.Module.I2CLiquidCrystal.#ctor(System.UInt16,System.Boolean,System.Boolean)">
+            <summary>
+            コンストラクター
+            </summary>
+            <param name="i2CAddress">モジュールのI2Cアドレス</param>
+            <param name="printWithStopBit">キャラクター出力にストップビットを使うかどうか</param>
+            <param name="useExFunctionSet">拡張コマンドを使うかどうか</param>
+        </member>
+        <member name="M:GrFamily.Module.I2CLiquidCrystal.InitModule">
+            <summary>
+            液晶キャラクターディスプレイのモジュールを初期化する
+            </summary>
+        </member>
+        <member name="M:GrFamily.Module.I2CLiquidCrystal.Print(System.String)">
+            <summary>
+            文字列を現在のカーソル位置から出力する
+            </summary>
+            <param name="msg">表示する文字列</param>
+        </member>
+        <member name="M:GrFamily.Module.I2CLiquidCrystal.Clear">
+            <summary>
+            表示クリア
+            </summary>
+        </member>
+        <member name="M:GrFamily.Module.I2CLiquidCrystal.Home">
+            <summary>
+            カーソルを初期位置に戻す
+            </summary>
+            <remarks>表示は消さない</remarks>
+        </member>
+        <member name="M:GrFamily.Module.I2CLiquidCrystal.DisplayOn(System.Boolean)">
+            <summary>
+            ディスプレイの表示・非表示を切り替える
+            </summary>
+            <param name="displayOn"></param>
+        </member>
+        <member name="M:GrFamily.Module.I2CLiquidCrystal.CursorOn(System.Boolean)">
+            <summary>
+            カーソル表示オン・オフを切り替える
+            </summary>
+            <param name="cursorOn"></param>
+        </member>
+        <member name="M:GrFamily.Module.I2CLiquidCrystal.BlinkOn(System.Boolean)">
+            <summary>
+            カーソル位置のブリンクのオン・オフを切り替える
+            </summary>
+            <param name="blinkOn">ブリンクを行うかどうか</param>
+        </member>
+        <member name="M:GrFamily.Module.I2CLiquidCrystal.SetCursor(System.Int32,System.Int32)">
+            <summary>
+            カーソル位置を設定する
+            </summary>
+            <param name="row">カーソルの行位置</param>
+            <param name="col">カーソルの列位置</param>
+        </member>
+        <member name="M:GrFamily.Module.I2CLiquidCrystal.ControlDisplay(System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            ディスプレイの表示に関する設定を変更する
+            </summary>
+            <param name="displayOn">ディスプレイ表示を行うかどうか</param>
+            <param name="cursorOn">カーソル表示を行うかどうか</param>
+            <param name="blinkOn">カーソルのブリンクを行うかどうか</param>
+        </member>
+        <member name="M:GrFamily.Module.I2CLiquidCrystal.WriteCharactor(System.Byte)">
+            <summary>
+            カーソル位置に一文字出力する
+            </summary>
+            <param name="data">出力する文字</param>
+        </member>
+        <member name="M:GrFamily.Module.I2CLiquidCrystal.WriteCommand(System.Byte,System.Int32)">
+            <summary>
+            制御コマンドを送信する
+            </summary>
+            <param name="cmd">コマンド</param>
+            <param name="wait">コマンド送信後のウェイトタイム</param>
+        </member>
+    </members>
+</doc>

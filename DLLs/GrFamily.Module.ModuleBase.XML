@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GrFamily.Module.ModuleBase</name>
+    </assembly>
+    <members>
+        <member name="T:GrFamily.Module.I2CDeviceEx">
+            <summary>
+            I2Cデバイスの拡張クラス
+            </summary>
+            <remarks>本クラスは I2CDeviceクラスに高級なメソッドを追加する</remarks>
+        </member>
+        <member name="F:GrFamily.Module.I2CDeviceEx._i2C">
+            <summary>I2Cデバイス</summary>
+        </member>
+        <member name="F:GrFamily.Module.I2CDeviceEx._timeout">
+            <summary>I2Cで通信失敗したときのタイムアウト値</summary>
+        </member>
+        <member name="F:GrFamily.Module.I2CDeviceEx._adata">
+            <summary>アドレス送信用バッファ</summary>
+        </member>
+        <member name="F:GrFamily.Module.I2CDeviceEx._rdata">
+            <summary>読み込み用バッファ</summary>
+        </member>
+        <member name="F:GrFamily.Module.I2CDeviceEx._wdata">
+            <summary>書き込み用バッファ</summary>
+        </member>
+        <member name="F:GrFamily.Module.I2CDeviceEx._trRegRead">
+            <summary>読み込み用のI2Cトランザクション</summary>
+        </member>
+        <member name="F:GrFamily.Module.I2CDeviceEx._trRegWrite">
+            <summary>書き込み用のI2Cトランザクション</summary>
+        </member>
+        <member name="M:GrFamily.Module.I2CDeviceEx.#ctor(System.UInt16,System.Int32,System.Int32)">
+            <summary>
+            コンストラクター
+            </summary>
+            <param name="i2CAddress">I2Cアドレス</param>
+            <param name="clockRateKhz">データ転送のクロックレート</param>
+            <param name="timeout">I2C通信失敗時のタイムアウト値</param>
+        </member>
+        <member name="M:GrFamily.Module.I2CDeviceEx.RegRead(System.Byte)">
+            <summary>
+            指定アドレスのデータを取得する
+            </summary>
+            <param name="reg">データ取得対象のアドレス</param>
+            <returns>取得データ</returns>
+        </member>
+        <member name="M:GrFamily.Module.I2CDeviceEx.RegReads(System.Byte,System.Byte[]@)">
+            <summary>
+            指定アドレスを起点として複数バイトデータを取得する
+            </summary>
+            <param name="reg">データ取得対象の先頭アドレス</param>
+            <param name="data">取得データ</param>
+        </member>
+        <member name="M:GrFamily.Module.I2CDeviceEx.RegWrite(System.Byte,System.Byte)">
+            <summary>
+            指定アドレスにデータを設定する
+            </summary>
+            <param name="reg">データ設定対象のアドレス</param>
+            <param name="val">設定するデータ</param>
+        </member>
+        <member name="M:GrFamily.Module.I2CDeviceEx.RegWriteMask(System.Byte,System.Byte,System.Byte)">
+            <summary>
+            指定アドレスの指定ビットに値を書き込む
+            </summary>
+            <param name="reg">指定ビットを含むバイト領域のアドレス</param>
+            <param name="val">設定するデータ</param>
+            <param name="mask">設定するデータを書き込むためのビットマスク</param>
+        </member>
+    </members>
+</doc>

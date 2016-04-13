@@ -1,20 +1,34 @@
 using System.Threading;
-using Microsoft.SPOT.Hardware;
-using GrFamily.Module;
 
 namespace GrFamily.Module
 {
+    /// <summary>
+    /// I2C接続の液晶キャラクターディスプレイ
+    /// </summary>
     public class I2CLiquidCrystal : I2CDeviceEx
     {
-        private bool _displayOn = true;       // ディスプレイをオンにするか
-        private bool _cursorOn = false;         // カーソルを表示するかどうか
-        private bool _blinkOn = false;          // カーソル位置でブリンクするか
+        /// <summary>ディスプレイをオンにするかどうか</summary>
+        private bool _displayOn = true;
+        /// <summary>カーソルを表示するかどうか</summary>
+        private bool _cursorOn;
+        /// <summary>カーソル位置でブリンクするかどうか</summary>
+        private bool _blinkOn;
 
+        /// <summary>ストップビット草深のタイミングでキャラクター出力を行うかどうか</summary>
         private readonly bool _printWithStopBit;
+        /// <summary>HD44780互換の拡張コマンドを使用するかどうか</summary>
+        /// <remarks>拡張コマンドを使用するかどうかはモジュールによって決まる</remarks>
         private readonly bool _useExFunctionSet;
 
-        private readonly int _commandWait = 1;            // コマンド実行後のウェイト
+        /// <summary>コマンド実行後のウェイトタイム（単位：ミリ秒）</summary>
+        private readonly int _commandWait = 1;
 
+        /// <summary>
+        /// コンストラクター
+        /// </summary>
+        /// <param name="i2CAddress">モジュールのI2Cアドレス</param>
+        /// <param name="printWithStopBit">キャラクター出力にストップビットを使うかどうか</param>
+        /// <param name="useExFunctionSet">拡張コマンドを使うかどうか</param>
         public I2CLiquidCrystal(ushort i2CAddress, bool printWithStopBit = false, bool useExFunctionSet = false) : base(i2CAddress)
         {
             _printWithStopBit = printWithStopBit;
@@ -22,6 +36,9 @@ namespace GrFamily.Module
             InitModule();
         }
 
+        /// <summary>
+        /// 液晶キャラクターディスプレイのモジュールを初期化する
+        /// </summary>
         private void InitModule()
         {
             Thread.Sleep(1000);
@@ -54,6 +71,10 @@ namespace GrFamily.Module
             Thread.Sleep(100);
         }
 
+        /// <summary>
+        /// 文字列を現在のカーソル位置から出力する
+        /// </summary>
+        /// <param name="msg">表示する文字列</param>
         public void Print(string msg)
         {
             for (var i = 0; i < msg.Length; i++)
@@ -79,6 +100,10 @@ namespace GrFamily.Module
             WriteCommand(0x02, 5);      // Return Homeはウェイトが必要
         }
 
+        /// <summary>
+        /// ディスプレイの表示・非表示を切り替える
+        /// </summary>
+        /// <param name="displayOn"></param>
         public void DisplayOn(bool displayOn)
         {
             ControlDisplay(displayOn, _cursorOn, _blinkOn);
@@ -98,19 +123,30 @@ namespace GrFamily.Module
         /// <summary>
         /// カーソル位置のブリンクのオン・オフを切り替える
         /// </summary>
-        /// <param name="blinkOn"></param>
+        /// <param name="blinkOn">ブリンクを行うかどうか</param>
         public void BlinkOn(bool blinkOn)
         {
             ControlDisplay(_displayOn, _cursorOn, blinkOn);
             _blinkOn = blinkOn;
         }
 
+        /// <summary>
+        /// カーソル位置を設定する
+        /// </summary>
+        /// <param name="row">カーソルの行位置</param>
+        /// <param name="col">カーソルの列位置</param>
         public void SetCursor(int row, int col)
         {
             var addr = (byte)(((byte)row) << 6) + (byte)col;
             WriteCommand((byte)(0x80 | addr));
         }
 
+        /// <summary>
+        /// ディスプレイの表示に関する設定を変更する
+        /// </summary>
+        /// <param name="displayOn">ディスプレイ表示を行うかどうか</param>
+        /// <param name="cursorOn">カーソル表示を行うかどうか</param>
+        /// <param name="blinkOn">カーソルのブリンクを行うかどうか</param>
         private void ControlDisplay(bool displayOn, bool cursorOn, bool blinkOn)
         {
             var cmd = (byte)0x08;
@@ -124,12 +160,21 @@ namespace GrFamily.Module
             WriteCommand(cmd, _commandWait);
         }
 
+        /// <summary>
+        /// カーソル位置に一文字出力する
+        /// </summary>
+        /// <param name="data">出力する文字</param>
         public void WriteCharactor(byte data)
         {
             var reg = _printWithStopBit ? (byte) 0x40 : (byte)0x80;
             RegWrite(reg, data);
         }
 
+        /// <summary>
+        /// 制御コマンドを送信する
+        /// </summary>
+        /// <param name="cmd">コマンド</param>
+        /// <param name="wait">コマンド送信後のウェイトタイム</param>
         public void WriteCommand(byte cmd, int wait = 1)
         {
             var reg = (byte)0x00;

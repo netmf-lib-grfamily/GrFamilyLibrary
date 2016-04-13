@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GrFamily.Module.Adxl345</name>
+    </assembly>
+    <members>
+        <member name="T:GrFamily.Module.Adxl345MeasurementCompleteEventHandler">
+            <summary>
+            ADXL345の測定値を返すデリゲート
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:GrFamily.Module.Adxl345">
+            <summary>
+            ADXL345（3軸加速度センサー）
+            </summary>
+        </member>
+        <member name="E:GrFamily.Module.Adxl345.MeasurementComplete">
+            <summary>
+            加速度測定時に呼び出されるイベントハンドラー
+            </summary>
+        </member>
+        <member name="F:GrFamily.Module.Adxl345.AccelerometerAddress">
+            <summary>ADXL345のI2Cアドレス</summary>
+        </member>
+        <member name="F:GrFamily.Module.Adxl345.PowerCtl">
+            <summary>電源管理コマンド用のレジスター</summary>
+        </member>
+        <member name="F:GrFamily.Module.Adxl345.DataFormat">
+            <summary>測定範囲を指定するコマンド用のレジスター</summary>
+        </member>
+        <member name="F:GrFamily.Module.Adxl345.DataX0">
+            <summary>測定値取得用のレジスター先頭</summary>
+        </member>
+        <member name="F:GrFamily.Module.Adxl345._range">
+            <summary>測定範囲</summary>
+        </member>
+        <member name="F:GrFamily.Module.Adxl345._xyz">
+            <summary>センサーデータの読出しバッファ</summary>
+        </member>
+        <member name="F:GrFamily.Module.Adxl345._timer">
+            <summary>センサーデータを定期的に測定するためのタイマー</summary>
+        </member>
+        <member name="P:GrFamily.Module.Adxl345.Interval">
+            <summary>
+            センサーデータ測定の間隔<br />単位 : ミリ秒
+            </summary>
+            <remarks>正の整数でない場合はタイマーを実行しない</remarks>
+        </member>
+        <member name="M:GrFamily.Module.Adxl345.#ctor">
+            <summary>
+            ADXL345のコンストラクター
+            </summary>
+            <remarks>デフォルトのI2Cアドレスで初期化する</remarks>
+        </member>
+        <member name="M:GrFamily.Module.Adxl345.#ctor(System.UInt16)">
+            <summary>
+            ADXL345のコンストラクター
+            </summary>
+            <param name="i2CAddress">I2Cアドレス</param>
+        </member>
+        <member name="M:GrFamily.Module.Adxl345.ToWakeup">
+            <summary>
+            ADSL345がスリープモードに入らないようにする
+            </summary>
+        </member>
+        <member name="M:GrFamily.Module.Adxl345.SetDataFormat(System.Byte)">
+            <summary>
+            データフォーマットを設定する
+            </summary>
+            <param name="n">設定値</param>
+            <remarks>設定値はビットフラグ<br />
+            D7: SELF_TEST<br />
+            D6: SPI<br />
+            D5: INT_INVERT<br />
+            D4: 0<br />
+            D3: FULL_RES<br />
+            D2: Justfy<br />
+            D1-D0: Range<br />
+            0 - 0: +-2g<br />
+            0 - 1: +-4g<br />
+            1 - 0: +-8g<br />
+            1 - 1: +-16g<br />
+            </remarks>
+        </member>
+        <member name="P:GrFamily.Module.Adxl345.MeasurementRange">
+            <summary>
+            測定範囲
+            </summary>
+        </member>
+        <member name="M:GrFamily.Module.Adxl345.Measure">
+            <summary>
+            加速度を測定する
+            </summary>
+        </member>
+        <member name="M:GrFamily.Module.Adxl345.GetX">
+            <summary>
+            X軸方向の加速度データを取得する
+            </summary>
+            <returns>X軸方向の加速度データ</returns>
+        </member>
+        <member name="M:GrFamily.Module.Adxl345.GetY">
+            <summary>
+            Y軸方向の加速度データを取得する
+            </summary>
+            <returns>Y軸方向の加速度データ</returns>
+        </member>
+        <member name="M:GrFamily.Module.Adxl345.GetZ">
+            <summary>
+            Z軸方向の加速度データを取得する
+            </summary>
+            <returns>Z軸方向の加速度データ</returns>
+        </member>
+        <member name="M:GrFamily.Module.Adxl345.GetXYZ(System.Int16@,System.Int16@,System.Int16@)">
+            <summary>
+            3軸の加速度データを取得する
+            </summary>
+            <param name="x">X軸方向の加速度データの受信バッファ</param>
+            <param name="y">Y軸方向の加速度データの受信バッファ</param>
+            <param name="z">Z軸方向の加速度データの受信バッファ</param>
+        </member>
+        <member name="M:GrFamily.Module.Adxl345.Measure_Timer(System.Object)">
+            <summary>
+            定期的に加速度データを取得する
+            </summary>
+            <param name="state">未使用</param>
+        </member>
+        <member name="M:GrFamily.Module.Adxl345.StartTakingMeasurements">
+            <summary>
+            タイマーを起動して、定期的に加速度データの取得を始める
+            </summary>
+        </member>
+        <member name="M:GrFamily.Module.Adxl345.StopTakingMeasurements">
+            <summary>
+            加速度データを定期的に取得するためのタイマーを停止する
+            </summary>
+        </member>
+        <member name="T:GrFamily.Module.Adxl345.Range">
+            <summary>
+            加速度の測定範囲
+            </summary>
+        </member>
+        <member name="F:GrFamily.Module.Adxl345.Range.TwoG">
+            <summary>+-2G</summary>
+        </member>
+        <member name="F:GrFamily.Module.Adxl345.Range.FourG">
+            <summary>+-4G</summary>
+        </member>
+        <member name="F:GrFamily.Module.Adxl345.Range.EightG">
+            <summary>+-8G</summary>
+        </member>
+        <member name="T:GrFamily.Module.Adxl345.MeasurementCompleteEventArgs">
+            <summary>
+            データ取得のイベントハンドラーに渡される加速度データ
+            </summary>
+        </member>
+        <member name="F:GrFamily.Module.Adxl345.MeasurementCompleteEventArgs.X">
+            <summary>X軸方向の加速度データ</summary>
+        </member>
+        <member name="F:GrFamily.Module.Adxl345.MeasurementCompleteEventArgs.Y">
+            <summary>Y軸方向の加速度データ</summary>
+        </member>
+        <member name="F:GrFamily.Module.Adxl345.MeasurementCompleteEventArgs.Z">
+            <summary>Z軸方向の加速度データ</summary>
+        </member>
+    </members>
+</doc>
