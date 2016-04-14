@@ -202,3 +202,5 @@ TestApp/Sakura/SakuraLedTest/OnBoardFlash.dat
 TestApp/Sakura/SakuraLedTest/OnBoardFlash.dat.smd
 TestApp/SensorBoard/AccelerometerTest/OnBoardFlash.dat
 TestApp/SensorBoard/AccelerometerTest/OnBoardFlash.dat.smd
+Help/
+DLLs/GrFamily.ExternalBoard.SensorBoard.XML

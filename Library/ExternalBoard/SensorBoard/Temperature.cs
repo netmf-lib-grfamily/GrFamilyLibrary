@@ -5,7 +5,7 @@ using Microsoft.SPOT.Hardware;
 namespace GrFamily.ExternalBoard
 {
     /// <summary>
-    /// 温度センサー（サーミスター）の測定値を返すイベントハンドラー
+    /// 温度センサー（サーミスター）の測定値を返すデリゲート
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
