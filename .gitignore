@@ -204,3 +204,11 @@ TestApp/SensorBoard/AccelerometerTest/OnBoardFlash.dat
 TestApp/SensorBoard/AccelerometerTest/OnBoardFlash.dat.smd
 Help/
 DLLs/GrFamily.ExternalBoard.SensorBoard.XML
+/DLLs/GrFamily.Utility.NetworkUtility.XML
+/DLLs/GrFamily.Module.ModuleBase.XML
+/DLLs/GrFamily.Module.LiquidCrystal.XML
+/DLLs/GrFamily.Module.I2CLiquidCrystal.XML
+/DLLs/GrFamily.Module.AnalogSensor.XML
+/DLLs/GrFamily.Module.Adxl345.XML
+/DLLs/GrFamily.MainBoard.Sakura.XML
+/DLLs/GrFamily.MainBoard.Peach.XML
