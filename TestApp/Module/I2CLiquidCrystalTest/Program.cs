@@ -1,4 +1,4 @@
-#define AQM0802A
+//#define AQM0802A
 
 using System.Threading;
 using GrFamily.Module;

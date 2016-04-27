@@ -16,14 +16,6 @@
             ADXL345（3軸加速度センサー）
             </summary>
         </member>
-        <member name="E:GrFamily.Module.Adxl345.MeasurementComplete">
-            <summary>
-            加速度測定時に呼び出されるイベントハンドラー
-            </summary>
-        </member>
-        <member name="F:GrFamily.Module.Adxl345.AccelerometerAddress">
-            <summary>ADXL345のI2Cアドレス</summary>
-        </member>
         <member name="F:GrFamily.Module.Adxl345.PowerCtl">
             <summary>電源管理コマンド用のレジスター</summary>
         </member>
@@ -33,6 +25,9 @@
         <member name="F:GrFamily.Module.Adxl345.DataX0">
             <summary>測定値取得用のレジスター先頭</summary>
         </member>
+        <member name="F:GrFamily.Module.Adxl345.AccelerometerAddress">
+            <summary>ADXL345のI2Cアドレス</summary>
+        </member>
         <member name="F:GrFamily.Module.Adxl345._range">
             <summary>測定範囲</summary>
         </member>
@@ -41,12 +36,6 @@
         </member>
         <member name="F:GrFamily.Module.Adxl345._timer">
             <summary>センサーデータを定期的に測定するためのタイマー</summary>
-        </member>
-        <member name="P:GrFamily.Module.Adxl345.Interval">
-            <summary>
-            センサーデータ測定の間隔<br />単位 : ミリ秒
-            </summary>
-            <remarks>正の整数でない場合はタイマーを実行しない</remarks>
         </member>
         <member name="M:GrFamily.Module.Adxl345.#ctor">
             <summary>
@@ -83,11 +72,6 @@
             1 - 0: +-8g<br />
             1 - 1: +-16g<br />
             </remarks>
-        </member>
-        <member name="P:GrFamily.Module.Adxl345.MeasurementRange">
-            <summary>
-            測定範囲
-            </summary>
         </member>
         <member name="M:GrFamily.Module.Adxl345.Measure">
             <summary>
@@ -134,6 +118,22 @@
         <member name="M:GrFamily.Module.Adxl345.StopTakingMeasurements">
             <summary>
             加速度データを定期的に取得するためのタイマーを停止する
+            </summary>
+        </member>
+        <member name="E:GrFamily.Module.Adxl345.MeasurementComplete">
+            <summary>
+            加速度測定時に呼び出されるイベントハンドラー
+            </summary>
+        </member>
+        <member name="P:GrFamily.Module.Adxl345.Interval">
+            <summary>
+            センサーデータ測定の間隔<br />単位 : ミリ秒
+            </summary>
+            <remarks>正の整数でない場合はタイマーを実行しない</remarks>
+        </member>
+        <member name="P:GrFamily.Module.Adxl345.MeasurementRange">
+            <summary>
+            測定範囲
             </summary>
         </member>
         <member name="T:GrFamily.Module.Adxl345.Range">

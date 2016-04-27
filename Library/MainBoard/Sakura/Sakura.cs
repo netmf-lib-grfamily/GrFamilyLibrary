@@ -44,7 +44,7 @@ namespace GrFamily.MainBoard
         }
 
         /// <summary>GR-SAKURAã‚Ìƒ{ƒ^ƒ“</summary>
-        public Button Button { get; }
+        public Button Button { get; private set; }
 
         /// <summary>
         /// ‘S‚Ä‚ÌLED‚ğÁ“”‚·‚é

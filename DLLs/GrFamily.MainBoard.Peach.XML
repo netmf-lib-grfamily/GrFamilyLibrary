@@ -16,28 +16,11 @@
             GR-PEACHマイコンボード上のボタン（スイッチ）
             </summary>
         </member>
-        <member name="T:GrFamily.MainBoard.Button.ButtonState">
-            <summary>
-            ボタンの状態
-            </summary>
-        </member>
-        <member name="F:GrFamily.MainBoard.Button.ButtonState.Pressed">
-            <summary>押されている</summary>
-        </member>
-        <member name="F:GrFamily.MainBoard.Button.ButtonState.Released">
-            <summary>離されている</summary>
-        </member>
         <member name="F:GrFamily.MainBoard.Button.ButtonPort">
             <summary>GR-PEACH上のボタンのデジタル入力ポート</summary>
         </member>
         <member name="F:GrFamily.MainBoard.Button.PrevPressed">
             <summary>前回の測定時にボタンが押されていたかどうか</summary>
-        </member>
-        <member name="E:GrFamily.MainBoard.Button.ButtonPressed">
-            <summary>ボタンが押された時のイベントハンドラー</summary>
-        </member>
-        <member name="E:GrFamily.MainBoard.Button.ButtonReleased">
-            <summary>ボタンが離された時のイベントハンドラー</summary>
         </member>
         <member name="M:GrFamily.MainBoard.Button.#ctor(Microsoft.SPOT.Hardware.Cpu.Pin)">
             <summary>
@@ -54,10 +37,27 @@
             <param name="time">ボタンの状態が変わった時にタイムスタンプ</param>
             <remarks>ボタンが押されると data2 が 0 になる、そうでない時は data2 は 0以外の値になる</remarks>
         </member>
+        <member name="E:GrFamily.MainBoard.Button.ButtonPressed">
+            <summary>ボタンが押された時のイベントハンドラー</summary>
+        </member>
+        <member name="E:GrFamily.MainBoard.Button.ButtonReleased">
+            <summary>ボタンが離された時のイベントハンドラー</summary>
+        </member>
         <member name="P:GrFamily.MainBoard.Button.IsPressed">
             <summary>
             ボタンが押されているかどうかを返す   
             </summary>
+        </member>
+        <member name="T:GrFamily.MainBoard.Button.ButtonState">
+            <summary>
+            ボタンの状態
+            </summary>
+        </member>
+        <member name="F:GrFamily.MainBoard.Button.ButtonState.Pressed">
+            <summary>押されている</summary>
+        </member>
+        <member name="F:GrFamily.MainBoard.Button.ButtonState.Released">
+            <summary>離されている</summary>
         </member>
         <member name="T:GrFamily.MainBoard.DebugLed">
             <summary>
@@ -66,24 +66,6 @@
             <remarks>このライブラリでデバッグLEDと呼ぶのはマイコンボード上の以下のLEDのこと<br />
             ・GR-PEACH : User LED<br />
             ・GR-SAKURA : LED4</remarks>
-        </member>
-        <member name="M:GrFamily.MainBoard.DebugLed.#ctor(Microsoft.SPOT.Hardware.Cpu.Pin)">
-            <summary>
-            コンストラクター
-            </summary>
-            <param name="pin">デバッグLEDが接続されたピン</param>
-        </member>
-        <member name="M:GrFamily.MainBoard.DebugLed.PulseDebugLed">
-            <summary>
-            デバッグLEDを1回点滅させる
-            </summary>
-        </member>
-        <member name="M:GrFamily.MainBoard.DebugLed.PulseDebugLed(System.Int32,System.Int32)">
-            <summary>
-            デバッグLEDを指定回数、指定間隔で点滅させる
-            </summary>
-            <param name="length">点滅間隔（単位：ミリ秒）</param>
-            <param name="times">点滅回数</param>
         </member>
         <member name="T:GrFamily.MainBoard.Led">
             <summary>
@@ -104,6 +86,24 @@
             LEDを点灯／消灯する
             </summary>
             <param name="on">LEDを点灯する場合は true、消灯する場合は false</param>
+        </member>
+        <member name="M:GrFamily.MainBoard.DebugLed.#ctor(Microsoft.SPOT.Hardware.Cpu.Pin)">
+            <summary>
+            コンストラクター
+            </summary>
+            <param name="pin">デバッグLEDが接続されたピン</param>
+        </member>
+        <member name="M:GrFamily.MainBoard.DebugLed.PulseDebugLed">
+            <summary>
+            デバッグLEDを1回点滅させる
+            </summary>
+        </member>
+        <member name="M:GrFamily.MainBoard.DebugLed.PulseDebugLed(System.Int32,System.Int32)">
+            <summary>
+            デバッグLEDを指定回数、指定間隔で点滅させる
+            </summary>
+            <param name="length">点滅間隔（単位：ミリ秒）</param>
+            <param name="times">点滅回数</param>
         </member>
         <member name="T:GrFamily.MainBoard.Peach">
             <summary>
@@ -142,9 +142,6 @@
             GR-PEACHのコンストラクター
             </summary>
         </member>
-        <member name="P:GrFamily.MainBoard.Peach.Button">
-            <summary>GR-PEACH上のボタン</summary>
-        </member>
         <member name="M:GrFamily.MainBoard.Peach.TurnAllLedsOff">
             <summary>
             全てのLEDを消灯する（赤・緑・青・デバッグLED）
@@ -181,6 +178,9 @@
             </summary>
             <param name="length">点滅間隔（単位：ミリ秒）</param>
             <param name="times">点滅回数</param>
+        </member>
+        <member name="P:GrFamily.MainBoard.Peach.Button">
+            <summary>GR-PEACH上のボタン</summary>
         </member>
         <member name="T:GrFamily.MainBoard.Peach.Color">
             <summary>
