@@ -43,7 +43,7 @@ namespace GrFamily.MainBoard
         }
 
         /// <summary>GR-PEACH上のボタン</summary>
-        public Button Button { get; }
+        public Button Button { get; private set; }
 
         /// <summary>
         /// 全てのLEDを消灯する（赤・緑・青・デバッグLED）

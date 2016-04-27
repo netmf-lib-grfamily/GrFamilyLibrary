@@ -41,7 +41,12 @@ namespace GrFamily.ExternalBoard
         /// センサーデータ測定の間隔<br />単位 : ミリ秒
         /// </summary>
         /// <remarks>正の整数でない場合はタイマーを実行しない</remarks>
-        public int Interval { get; set; } = -1;
+        public int Interval
+        {
+            get { return _interval; }
+            set { _interval = value; }
+        }
+        private int _interval = -1;
 
         /// <summary>
         /// コンストラクター

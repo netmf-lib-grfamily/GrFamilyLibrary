@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\MainBoard\Peach\System.Diagnostics.cs">
-      <Link>System.Diagnostics.cs</Link>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AnalogSensor.cs" />
   </ItemGroup>

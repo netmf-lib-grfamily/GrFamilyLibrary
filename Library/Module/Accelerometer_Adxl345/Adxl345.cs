@@ -34,7 +34,7 @@ namespace GrFamily.Module
         private Range _range;
 
         /// <summary>センサーデータの読出しバッファ</summary>
-        private byte[] _xyz = new byte[6];
+        private byte[] _xyz;
 
         /// <summary>センサーデータを定期的に測定するためのタイマー</summary>
         private readonly Timer _timer;
@@ -43,7 +43,12 @@ namespace GrFamily.Module
         /// センサーデータ測定の間隔<br />単位 : ミリ秒
         /// </summary>
         /// <remarks>正の整数でない場合はタイマーを実行しない</remarks>
-        public int Interval { get; set; } = -1;
+        public int Interval
+        {
+            get { return _interval; }
+            set { _interval = value; }
+        }
+        private int _interval = -1;
 
         /// <summary>
         /// ADXL345のコンストラクター
@@ -59,6 +64,7 @@ namespace GrFamily.Module
         /// <param name="i2CAddress">I2Cアドレス</param>
         public Adxl345(ushort i2CAddress) : base(i2CAddress)
         {
+            _xyz = new byte[6];
             _timer = new Timer(Measure_Timer, null, Timeout.Infinite, Timeout.Infinite);
 
             MeasurementRange = Range.FourG;

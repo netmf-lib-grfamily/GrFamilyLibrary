@@ -52,17 +52,26 @@ namespace GrFamily.ExternalBoard
         /// <summary>
         /// 温度センサーのコンストラクター
         /// </summary>
-        public Temperature Temperature => _temperature ?? (_temperature = new Temperature(_tempChannel, Bc, R25, _vr1, Adc));
+        public Temperature Temperature
+        {
+            get { return _temperature ?? (_temperature = new Temperature(_tempChannel, Bc, R25, _vr1, Adc)); }
+        }
 
         /// <summary>
         /// 加速度センサーのコンストラクター
         /// </summary>
-        public Accelerometer Accelerometer => _accelerometer ?? (_accelerometer = new Accelerometer(AccelerometerAddress));
+        public Accelerometer Accelerometer
+        {
+            get { return _accelerometer ?? (_accelerometer = new Accelerometer(AccelerometerAddress)); }
+        }
 
         /// <summary>
         /// 端子台のコンストラクター
         /// </summary>
-        public SensorTerminal Terminal => _terminal ?? (_terminal = new SensorTerminal(_termChannel));
+        public SensorTerminal Terminal
+        {
+            get { return _terminal ?? (_terminal = new SensorTerminal(_termChannel)); }
+        }
 
         /// <summary>
         /// PinKit センサーボードのコンストラクター
