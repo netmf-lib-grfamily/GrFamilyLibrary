@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="d1f02da2-e878-47d4-b3ca-c17b39a62500" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<introduction>
+			<para>The topics in this section describe the various changes made to the GR-Family Library over the
+life of the project.</para>
+		</introduction>
+
+		<section>
+			<title>Version History</title>
+			<content>
+				<para>Select a version below to see a description of its changes.</para>
+
+				<list class="bullet">
+					<listItem>
+						<para><link xlink:href="565d0628-f2ec-4464-a202-d94607473dde" /></para>
+					</listItem>
+
+					<!--<listItem>
+						<para>[TODO: Add links to each specific version page]</para>
+					</listItem>-->
+
+				</list>
+
+			</content>
+		</section>
+
+		<relatedTopics>
+			<link xlink:href="5888f0ce-4ed6-43eb-aacc-01c92559638b" />
+		</relatedTopics>
+
+	</developerConceptualDocument>
+</topic>
