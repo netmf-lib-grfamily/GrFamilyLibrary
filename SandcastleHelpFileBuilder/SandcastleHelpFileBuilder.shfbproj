@@ -73,6 +73,12 @@
     <CatalogVersion>100</CatalogVersion>
     <CatalogProductId>VS</CatalogProductId>
     <MissingTags>Summary, Parameter, Returns, Remarks, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="(global)" isDocumented="False" />
+<NamespaceSummaryItem name="GrFamily.ExternalBoard" isDocumented="True">ExternalBoard は、IoT ALGYAN で配布している PinKit センサーボード用のライブラリです。</NamespaceSummaryItem>
+<NamespaceSummaryItem name="GrFamily.MainBoard" isDocumented="True">MainBoard は、GR-PEACH / GR-SAKURA のマイコンボード用のライブラリです。</NamespaceSummaryItem>
+<NamespaceSummaryItem name="GrFamily.Module" isDocumented="True">Module は、Arudino 互換ピンに接続する市販のモジュールおよびパーツ用のライブラリです。</NamespaceSummaryItem>
+<NamespaceSummaryItem name="GrFamily.Utility" isDocumented="True">Utility は、センサーデバイスなど以外の汎用ライブラリです。</NamespaceSummaryItem></NamespaceSummaries>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->

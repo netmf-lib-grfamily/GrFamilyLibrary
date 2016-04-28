@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Topics>
-  <Topic id="5888f0ce-4ed6-43eb-aacc-01c92559638b" visible="True" isSelected="true" title="Welcome to the GR-Family Library" tocTitle="GR-Family Library">
+  <Topic id="5888f0ce-4ed6-43eb-aacc-01c92559638b" visible="True" isDefault="true" isSelected="true" title="Welcome to the GR-Family Library" tocTitle="GR-Family Library">
     <HelpKeywords>
       <HelpKeyword index="K" term="Welcome" />
     </HelpKeywords>
@@ -9,7 +9,7 @@
     <HelpKeywords>
       <HelpKeyword index="K" term="version, history" />
     </HelpKeywords>
-    <Topic id="565d0628-f2ec-4464-a202-d94607473dde" visible="True" isDefault="true" title="Version 1.0.0.0">
+    <Topic id="565d0628-f2ec-4464-a202-d94607473dde" visible="True" title="Version 1.0.0.0">
       <HelpKeywords>
         <HelpKeyword index="K" term="version, 1.0.0.0" />
       </HelpKeywords>
